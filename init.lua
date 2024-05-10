@@ -35,6 +35,7 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 vim.keymap.set("n", "<space>fb", ":Telescope file_browser<CR>")
+vim.keymap.set("n", "<leader>tt", "<cmd>lua require('toggleterm').toggle()<CR>", { desc = "Toggle [T]erminal" })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
@@ -54,6 +55,17 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 	{ "numToStr/Comment.nvim", opts = {} },
+	  {'akinsho/toggleterm.nvim', version = "*", config = true},
+
+{
+  "folke/noice.nvim",
+  event = "VeryLazy",
+  opts = {
+  },
+  dependencies = {
+    "MunifTanjim/nui.nvim",
+    }
+},
 
 	{ -- Adds git related signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",
