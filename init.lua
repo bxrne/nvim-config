@@ -65,6 +65,7 @@ require("lazy").setup({
 	{ "akinsho/toggleterm.nvim", version = "*", config = true, opts = {
 		direction = "float",
 	} },
+	{
 
 	{
 		"folke/noice.nvim",
