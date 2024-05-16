@@ -60,7 +60,7 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
+	{"tpope/vim-sleuth"}, -- Detect tabstop and shiftwidth automatically
 	{ "numToStr/Comment.nvim", opts = {} },
 	{ "akinsho/toggleterm.nvim", version = "*", config = true, opts = {
 		direction = "float",
@@ -456,7 +456,7 @@ require("lazy").setup({
 			require("nvim-treesitter.configs").setup(opts)
 		end,
 	},
-}, {
+}, 
 	ui = {
 		icons = vim.g.have_nerd_font and {} or {
 			cmd = "⌘",
@@ -473,5 +473,6 @@ require("lazy").setup({
 			task = "📌",
 			lazy = "💤 ",
 		},
-	},
-})
+		}	}
+)
+
