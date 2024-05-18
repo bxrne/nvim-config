@@ -5,7 +5,7 @@ vim.g.have_nerd_font = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.mouse = "a"
-vim.opt.showmode = false
+vim.opt.showmode = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.breakindent = false
 vim.opt.undofile = true
@@ -22,9 +22,9 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
+-- vim.opt.tabstop = 2
+-- vim.opt.shiftwidth = 2
+-- vim.opt.expandtab = true
 
 vim.g.loaded_netrw = 0
 
@@ -79,20 +79,6 @@ require("lazy").setup {
 				"MunifTanjim/nui.nvim",
 			},
 		},
-		{
-			"ray-x/go.nvim",
-			dependencies = { -- optional packages
-				"ray-x/guihua.lua",
-				"neovim/nvim-lspconfig",
-				"nvim-treesitter/nvim-treesitter",
-			},
-			config = function()
-				require("go").setup()
-			end,
-			event = { "CmdlineEnter" },
-			ft = { "go", "gomod" },
-			build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
-		},
 		{ -- Adds git related signs to the gutter, as well as utilities for managing changes
 			"lewis6991/gitsigns.nvim",
 			opts = {
@@ -105,6 +91,21 @@ require("lazy").setup {
 				},
 			},
 		},
+		{
+  "ray-x/go.nvim",
+  dependencies = {  -- optional packages
+    "ray-x/guihua.lua",
+    "neovim/nvim-lspconfig",
+    "nvim-treesitter/nvim-treesitter",
+  },
+  config = function()
+    require("go").setup()
+  end,
+  event = {"CmdlineEnter"},
+  ft = {"go", 'gomod'},
+  build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
+  opts = {}
+},
 
 		{ -- Useful plugin to show you pending keybinds.
 			"folke/which-key.nvim",
@@ -131,20 +132,7 @@ require("lazy").setup {
 			"nvim-telescope/telescope-file-browser.nvim",
 			dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 		},
-		{ 
-			"ray-x/go.nvim",
-			dependencies = { -- optional packages
-				"ray-x/guihua.lua",
-				"neovim/nvim-lspconfig",
-				"nvim-treesitter/nvim-treesitter",
-			},
-			config = function()
-				require("go").setup()
-			end,
-			event = { "CmdlineEnter" },
-			ft = { "go", "gomod" },
-			build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
-		},
+		
 		{ -- Fuzzy Finder (files, lsp, etc)
 			"nvim-telescope/telescope.nvim",
 			event = "VimEnter",
@@ -355,16 +343,6 @@ require("lazy").setup {
 				end,
 				formatters_by_ft = {
 					lua = { "stylua" },
-					c = { "clang-format" },
-					go = { "gofmt", "goimports" },
-					python = { "black" },
-					sh = { "shfmt" },
-					yaml = { "prettier" },
-					json = { "prettier" },
-					html = { "prettier" },
-					css = { "prettier" },
-					javascript = { "prettier" },
-					typescript = { "prettier" },
 				},
 			},
 		},
@@ -391,6 +369,11 @@ require("lazy").setup {
 				local cmp = require "cmp"
 				local luasnip = require "luasnip"
 				luasnip.config.setup {}
+
+				local lspconfig = require 'lspconfig'
+    lspconfig.gopls.setup {
+      capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    }
 
 				cmp.setup {
 					snippet = {
@@ -449,8 +432,15 @@ require("lazy").setup {
 		},
 
 		-- Highlight todo, notes, etc in comments
-		{ "folke/todo-comments.nvim", event = "VimEnter", dependencies = { "nvim-lua/plenary.nvim" }, opts = { signs = true } },
-
+{ 
+  "folke/todo-comments.nvim", 
+  event = "VimEnter", 
+  dependencies = { "nvim-lua/plenary.nvim" }, 
+  config = function() 
+    require("todo-comments").setup() 
+  end,
+  opts = { signs = true } 
+},
 		{ -- Collection of various small independent plugins/modules
 			"echasnovski/mini.nvim",
 			config = function()
@@ -470,7 +460,7 @@ require("lazy").setup {
 			"nvim-treesitter/nvim-treesitter",
 			build = ":TSUpdate",
 			opts = {
-				ensure_installed = { "bash", "c", "diff", "html", "lua", "luadoc", "markdown", "vim", "vimdoc" },
+				ensure_installed = { "bash", "c", "diff", "html", "lua", "luadoc", "markdown", "vim", "vimdoc", "go"},
 				auto_install = true,
 				highlight = {
 					enable = true,
