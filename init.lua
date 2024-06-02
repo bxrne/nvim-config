@@ -91,6 +91,8 @@ require("lazy").setup({
 			{ "MaximilianLloyd/ascii.nvim", dependencies = { "MunifTanjim/nui.nvim" } },
 		},
 		config = function()
+			local info = vim.loop.os_uname()
+
 			require("dashboard").setup {
 				header = require("ascii").art.text.neovim.sharp,
 				date_format = "%Y-%m-%d | %H:%M",
@@ -99,6 +101,9 @@ require("lazy").setup({
 					"~/Code/BEAM",
 					"~/Code/bxrne",
 					"~/.config",
+				},
+				footer = {
+					vim.loop.cwd() .. " " .. info.sysname .. " " .. info.machine,
 				},
 			}
 		end,
