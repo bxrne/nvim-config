@@ -97,13 +97,12 @@ require("lazy").setup({
 				header = require("ascii").art.text.neovim.sharp,
 				date_format = "%Y-%m-%d | %H:%M",
 				directories = {
-					"~/Code/",
+					"~/Code",
 					"~/Code/BEAM",
-					"~/Code/bxrne",
-					"~/.config",
+					"~/Code/bxrne"
 				},
 				footer = {
-					vim.loop.cwd() .. " " .. info.sysname .. " " .. info.machine,
+					info.sysname .. " | " .. info.machine,
 				},
 			}
 		end,
