@@ -98,8 +98,9 @@ require("lazy").setup({
 				date_format = "%Y-%m-%d | %H:%M",
 				directories = {
 					"~/Code",
-					"~/Code/BEAM",
-					"~/Code/bxrne"
+					"~/BEAM/landing",
+					"~/BEAM/beam-fitness",
+					"~/Code/bxrne",
 				},
 				footer = {
 					info.sysname .. " | " .. info.machine,
