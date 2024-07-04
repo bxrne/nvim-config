@@ -97,8 +97,10 @@ require("lazy").setup({
 				header = require("ascii").art.text.neovim.sharp,
 				date_format = "%Y-%m-%d | %H:%M",
 				directories = {
-					"~/BEAM/mobile-app",
-					"~/BEAM/landing",
+					"~/Code/BEAM/nutrigenie2",
+					"~/Code/BEAM/nutrigenie",
+					"~/Code/BEAM/landing",
+					"~/Code/BEAM/mobile-app",
 					"~/Code/bxrne",
 				},
 				footer = {
@@ -108,19 +110,19 @@ require("lazy").setup({
 		end,
 	},
 	{
-  "ray-x/go.nvim",
-  dependencies = {  -- optional packages
-    "ray-x/guihua.lua",
-    "neovim/nvim-lspconfig",
-    "nvim-treesitter/nvim-treesitter",
-  },
-  config = function()
-    require("go").setup()
-  end,
-  event = {"CmdlineEnter"},
-  ft = {"go", 'gomod'},
-  build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
-},
+		"ray-x/go.nvim",
+		dependencies = { -- optional packages
+			"ray-x/guihua.lua",
+			"neovim/nvim-lspconfig",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		config = function()
+			require("go").setup()
+		end,
+		event = { "CmdlineEnter" },
+		ft = { "go", "gomod" },
+		build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
+	},
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {
