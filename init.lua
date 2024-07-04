@@ -129,12 +129,10 @@ require("lazy").setup({
 		},
 		config = function()
 			local info = vim.loop.os_uname()
-
 			require("dashboard").setup {
 				header = require("ascii").art.text.neovim.sharp,
 				date_format = "%Y-%m-%d | %H:%M",
 				directories = {
-					"~/Code/BEAM/nutrigenie2",
 					"~/Code/BEAM/nutrigenie",
 					"~/Code/BEAM/landing",
 					"~/Code/BEAM/mobile-app",
@@ -143,6 +141,10 @@ require("lazy").setup({
 				footer = {
 					info.sysname .. " | " .. info.machine,
 				},
+				on_select = function(item)
+					vim.cmd("cd " .. item.path)
+					vim.cmd "Explore"
+				end,
 			}
 		end,
 	},
