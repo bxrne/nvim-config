@@ -217,8 +217,9 @@ require("lazy").setup({
 			require("telescope").setup {
 				extensions = {
 					file_browser = {
-						theme = "ivy",
+						theme = "dropdown",
 						hijack_netrw = true,
+						hidden = true, -- Show hidden files
 					},
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown(),
