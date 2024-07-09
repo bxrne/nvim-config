@@ -75,6 +75,8 @@ vim.keymap.set("n", "<leader>7", ":BufferLineGoToBuffer 7<CR>", { desc = "Go to 
 vim.keymap.set("n", "<leader>8", ":BufferLineGoToBuffer 8<CR>", { desc = "Go to buffer 8" })
 vim.keymap.set("n", "<leader>9", ":BufferLineGoToBuffer 9<CR>", { desc = "Go to buffer 9" })
 
+
+
 -- Autocommmands
 
 -- Highlight on yank
@@ -377,7 +379,7 @@ require("lazy").setup({
 			formatters_by_ft = { lua = { "stylua" } },
 		},
 	},
-	{
+	
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
   dependencies = {
@@ -467,6 +469,14 @@ require("lazy").setup({
 			language = "English", -- Copilot answer language settings when using default prompts. Default language is English.
 			-- proxy = "socks5://127.0.0.1:3000", -- Proxies requests via https or socks.
 			-- temperature = 0.1,
+			context = 'buffers',
+			window = {
+				layout='float',
+				width=1,
+				height=1,
+				border = 'rounded',
+				
+			}
 		},
 		build = function()
 			vim.notify "Please update the remote plugins by running ':UpdateRemotePlugins', then restart Neovim."
