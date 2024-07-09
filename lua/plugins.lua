@@ -1,4 +1,3 @@
--- Lazy.nvim installation
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -6,7 +5,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Plugin configuration using Lazy.nvim
 require("lazy").setup({
 	"tpope/vim-sleuth",
 	{ "numToStr/Comment.nvim", opts = {} },
@@ -33,6 +31,16 @@ require("lazy").setup({
 			}
 		end,
 	},
+      {
+    'github/copilot.vim',
+    config = function()
+      vim.g.copilot_no_tab_map = true
+      -- use current directory as the context
+        vim.g.copilot_context = 'buffers'
+
+      vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+    end
+  },
 	{
 		"MeanderingProgrammer/dashboard.nvim",
 		event = "VimEnter",
@@ -379,7 +387,6 @@ require("lazy").setup({
 			language = "English", -- Copilot answer language settings when using default prompts. Default language is English.
 			-- proxy = "socks5://127.0.0.1:3000", -- Proxies requests via https or socks.
 			-- temperature = 0.1,
-			context = 'buffers',
 			window = {
 				layout='float',
 				width=1,
