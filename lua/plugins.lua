@@ -31,16 +31,26 @@ require("lazy").setup({
 			}
 		end,
 	},
-      {
-    'github/copilot.vim',
-    config = function()
-      vim.g.copilot_no_tab_map = true
-      -- use current directory as the context
-        vim.g.copilot_context = 'buffers'
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+			"3rd/image.nvim",
+		},
+	},
+	{
+		"github/copilot.vim",
+		config = function()
+			vim.g.copilot_no_tab_map = true
+			-- use current directory as the context
+			vim.g.copilot_context = "buffers"
 
-      vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
-    end
-  },
+			vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+		end,
+	},
 	{
 		"MeanderingProgrammer/dashboard.nvim",
 		event = "VimEnter",
@@ -116,6 +126,7 @@ require("lazy").setup({
 	{
 		"nvim-telescope/telescope-file-browser.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+
 	},
 	{
 		"nvim-telescope/telescope.nvim",
@@ -137,7 +148,7 @@ require("lazy").setup({
 			require("telescope").setup {
 				extensions = {
 					file_browser = {
-						theme = "dropdown",
+						theme = "ivy",
 						hijack_netrw = true,
 						hidden = true, -- Show hidden files
 					},
@@ -298,78 +309,78 @@ require("lazy").setup({
 		},
 	},
 	{
-  "hrsh7th/nvim-cmp",
-  event = "InsertEnter",
-  dependencies = {
-    {
-      "L3MON4D3/LuaSnip",
-      build = (function()
-        if vim.fn.has "win32" == 1 or vim.fn.executable "make" == 0 then
-          return
-        end
-        return "make install_jsregexp"
-      end)(),
-    },
-    "saadparwaiz1/cmp_luasnip",
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-path",
-  },
-  config = function()
-    local cmp = require "cmp"
-    local luasnip = require "luasnip"
-    luasnip.config.setup {}
+		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
+		dependencies = {
+			{
+				"L3MON4D3/LuaSnip",
+				build = (function()
+					if vim.fn.has "win32" == 1 or vim.fn.executable "make" == 0 then
+						return
+					end
+					return "make install_jsregexp"
+				end)(),
+			},
+			"saadparwaiz1/cmp_luasnip",
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-path",
+		},
+		config = function()
+			local cmp = require "cmp"
+			local luasnip = require "luasnip"
+			luasnip.config.setup {}
 
-    cmp.setup {
-      snippet = {
-        expand = function(args)
-          luasnip.lsp_expand(args.body)
-        end,
-      },
-      completion = { completeopt = "menu,menuone,noinsert" },
-      mapping = cmp.mapping.preset.insert {
-        ["<C-n>"] = cmp.mapping.select_next_item(),
-        ["<C-p>"] = cmp.mapping.select_prev_item(),
-        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-y>"] = cmp.mapping.confirm { select = true },
-        ["<C-Space>"] = cmp.mapping.complete {},
-        ["<C-l>"] = cmp.mapping(function()
-          if luasnip.expand_or_locally_jumpable() then
-            luasnip.expand_or_jump()
-          end
-        end, { "i", "s" }),
-        ["<C-h>"] = cmp.mapping(function()
-          if luasnip.locally_jumpable(-1) then
-            luasnip.jump(-1)
-          end
-        end, { "i", "s" }),
-        ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-      },
-      sources = {
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-        { name = "path" },
-      },
-    }
-  end,
-},
+			cmp.setup {
+				snippet = {
+					expand = function(args)
+						luasnip.lsp_expand(args.body)
+					end,
+				},
+				completion = { completeopt = "menu,menuone,noinsert" },
+				mapping = cmp.mapping.preset.insert {
+					["<C-n>"] = cmp.mapping.select_next_item(),
+					["<C-p>"] = cmp.mapping.select_prev_item(),
+					["<C-b>"] = cmp.mapping.scroll_docs(-4),
+					["<C-f>"] = cmp.mapping.scroll_docs(4),
+					["<C-y>"] = cmp.mapping.confirm { select = true },
+					["<C-Space>"] = cmp.mapping.complete {},
+					["<C-l>"] = cmp.mapping(function()
+						if luasnip.expand_or_locally_jumpable() then
+							luasnip.expand_or_jump()
+						end
+					end, { "i", "s" }),
+					["<C-h>"] = cmp.mapping(function()
+						if luasnip.locally_jumpable(-1) then
+							luasnip.jump(-1)
+						end
+					end, { "i", "s" }),
+					["<Tab>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_next_item()
+						elseif luasnip.expand_or_jumpable() then
+							luasnip.expand_or_jump()
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
+					["<S-Tab>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_prev_item()
+						elseif luasnip.jumpable(-1) then
+							luasnip.jump(-1)
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
+				},
+				sources = {
+					{ name = "nvim_lsp" },
+					{ name = "luasnip" },
+					{ name = "path" },
+				},
+			}
+		end,
+	},
 
 	{
 		"folke/tokyonight.nvim",
@@ -388,12 +399,11 @@ require("lazy").setup({
 			-- proxy = "socks5://127.0.0.1:3000", -- Proxies requests via https or socks.
 			-- temperature = 0.1,
 			window = {
-				layout='float',
-				width=1,
-				height=1,
-				border = 'rounded',
-				
-			}
+				layout = "float",
+				width = 0.75,
+				height = 0.75,
+				border = "rounded",
+			},
 		},
 		build = function()
 			vim.notify "Please update the remote plugins by running ':UpdateRemotePlugins', then restart Neovim."
