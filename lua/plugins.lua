@@ -81,9 +81,7 @@ require("lazy").setup({
 		"github/copilot.vim",
 		config = function()
 			vim.g.copilot_no_tab_map = true
-			-- use current directory as the context
 			vim.g.copilot_context = "buffers"
-
 			vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 		end,
 	},
@@ -98,18 +96,11 @@ require("lazy").setup({
 			require("dashboard").setup {
 				header = require("ascii").art.text.neovim.sharp,
 				date_format = "%Y-%m-%d | %H:%M",
-				directories = {
-					"~/Code/BEAM/nutrigenie",
-					"~/Code/BEAM/landing",
-					"~/Code/BEAM/mobile-app",
-					"~/Code/bxrne",
-				},
 				footer = {
 					info.sysname .. " | " .. info.machine,
 				},
 				on_select = function(item)
 					vim.cmd("cd " .. item.path)
-					vim.cmd "Explore"
 				end,
 			}
 		end,
@@ -478,18 +469,6 @@ require("lazy").setup({
 		},
 	},
 	{ "folke/todo-comments.nvim", event = "VimEnter", dependencies = { "nvim-lua/plenary.nvim" }, opts = { signs = true } },
-	{
-		"echasnovski/mini.nvim",
-		config = function()
-			require("mini.ai").setup { n_lines = 500 }
-			require("mini.surround").setup()
-			local statusline = require "mini.statusline"
-			statusline.setup { use_icons = vim.g.have_nerd_font }
-			statusline.section_location = function()
-				return "%2l:%-2v"
-			end
-		end,
-	},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",

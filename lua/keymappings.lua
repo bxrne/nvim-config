@@ -12,11 +12,6 @@ vim.keymap.set("n", "<space>fb", ":Telescope file_browser<CR>")
 vim.keymap.set("n", "<leader>tt", "<cmd>lua require('toggleterm').toggle()<CR>", { desc = "Toggle [T]erminal" })
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
-vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
-vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
-vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
-vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
-
 vim.keymap.set("n", "<leader>bn", ":enew<CR>", { desc = "Create [N]ew [B]uffer" })
 vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "[D]elete current [B]uffer" })
 vim.keymap.set("n", "<leader>bb", ":bprevious<CR>", { desc = "Go to [P]revious [B]uffer" })
