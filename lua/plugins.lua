@@ -32,6 +32,7 @@ require("lazy").setup({
 		},
 		dependencies = { "MunifTanjim/nui.nvim" },
 	},
+
 	{
 		"kdheepak/lazygit.nvim",
 		cmd = {
@@ -117,17 +118,17 @@ require("lazy").setup({
 		end,
 		event = { "CmdlineEnter" },
 		ft = { "go", "gomod" },
-		build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
+		build = ':lua require("go.install").update_all_sync()',
 	},
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {
 			signs = {
-				add = { text = "+" },
-				change = { text = "~" },
-				delete = { text = "_" },
-				topdelete = { text = "‾" },
-				changedelete = { text = "~" },
+				add = { text = "" },
+				change = { text = "" },
+				delete = { text = "" },
+				topdelete = { text = "" },
+				changedelete = { text = "" },
 			},
 		},
 	},
@@ -176,7 +177,7 @@ require("lazy").setup({
 					file_browser = {
 						theme = "ivy",
 						hijack_netrw = true,
-						hidden = true, -- Show hidden files
+						hidden = true,
 					},
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown(),
@@ -418,16 +419,16 @@ require("lazy").setup({
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 		opts = {
-			show_help = "yes", -- Show help text for CopilotChatInPlace, default: yes
-			debug = false, -- Enable or disable debug mode, the log file will be in ~/.local/state/nvim/CopilotChat.nvim.log
-			disable_extra_info = "no", -- Disable extra information (e.g: system prompt) in the response.
-			language = "English", -- Copilot answer language settings when using default prompts. Default language is English.
-			-- proxy = "socks5://127.0.0.1:3000", -- Proxies requests via https or socks.
-			-- temperature = 0.1,
+			show_help = "no",
+			debug = false,
+			disable_extra_info = "yes",
+			language = "English",
+			-- proxy = "socks5://127.0.0.1:3000",
+			temperature = 0.5,
 			window = {
 				layout = "float",
-				width = 0.75,
-				height = 0.75,
+				width = 0.5,
+				height = 0.5,
 				border = "rounded",
 			},
 		},
@@ -436,36 +437,7 @@ require("lazy").setup({
 		end,
 		event = "VeryLazy",
 		keys = {
-			{ "<leader>ccb", ":CopilotChatBuffer ", desc = "CopilotChat - Chat with current buffer" },
-			{ "<leader>cce", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
-			{ "<leader>cct", "<cmd>CopilotChatTests<cr>", desc = "CopilotChat - Generate tests" },
-			{
-				"<leader>ccT",
-				"<cmd>CopilotChatVsplitToggle<cr>",
-				desc = "CopilotChat - Toggle Vsplit", -- Toggle vertical split
-			},
-			{
-				"<leader>ccv",
-				":CopilotChatVisual ",
-				mode = "x",
-				desc = "CopilotChat - Open in vertical split",
-			},
-			{
-				"<leader>ccx",
-				":CopilotChatInPlace<cr>",
-				mode = "x",
-				desc = "CopilotChat - Run in-place code",
-			},
-			{
-				"<leader>ccf",
-				"<cmd>CopilotChatFixDiagnostic<cr>", -- Get a fix for the diagnostic message under the cursor.
-				desc = "CopilotChat - Fix diagnostic",
-			},
-			{
-				"<leader>ccr",
-				"<cmd>CopilotChatReset<cr>", -- Reset chat history and clear buffer.
-				desc = "CopilotChat - Reset chat history and clear buffer",
-			},
+			{ "<leader>cc", "<cmd>CopilotChat<cr>", desc = "Chat with current buffers" },
 		},
 	},
 	{ "folke/todo-comments.nvim", event = "VimEnter", dependencies = { "nvim-lua/plenary.nvim" }, opts = { signs = true } },
