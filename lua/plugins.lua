@@ -32,7 +32,11 @@ require("lazy").setup({
 		},
 		dependencies = { "MunifTanjim/nui.nvim" },
 	},
-
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {},
+	},
 	{
 		"kdheepak/lazygit.nvim",
 		cmd = {
