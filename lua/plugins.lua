@@ -35,7 +35,9 @@ require("lazy").setup({
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
-		opts = {},
+		opts = {
+			theme = "iceberg_dark",
+		},
 	},
 	{
 		"kdheepak/lazygit.nvim",
