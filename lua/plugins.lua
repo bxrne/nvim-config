@@ -33,15 +33,6 @@ require("lazy").setup({
 		dependencies = { "MunifTanjim/nui.nvim" },
 	},
 	{
-		"goerz/jupytext.vim",
-		ft = { "ipynb" },
-		build = "pip install jupytext",
-		config = function()
-			vim.g.jupytext_fmt = "py"
-			vim.g.jupytext_style = "hydrogen"
-		end,
-	},
-	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 		ft = { "markdown" },
