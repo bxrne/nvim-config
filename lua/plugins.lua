@@ -470,11 +470,17 @@ require("lazy").setup({
 			language = "English",
 			-- proxy = "socks5://127.0.0.1:3000",
 			temperature = 0.5,
+			question_header = "[USER] ",
+			answer_header = "[LLM] ",
+			err_header = "[ERR] ",
+
+			context = "buffers",
 			window = {
 				layout = "float",
-				width = 0.5,
-				height = 0.5,
-				border = "rounded",
+				width = 0.75,
+				height = 0.75,
+				border = "solid",
+				title = "LLM Chat",
 			},
 		},
 		build = function()
@@ -483,6 +489,7 @@ require("lazy").setup({
 		event = "VeryLazy",
 		keys = {
 			{ "<leader>cc", "<cmd>CopilotChat<cr>", desc = "Chat with current buffers" },
+			{ "<leader>ct", "<cmd>CopilotChatTests<cr>", desc = "Generate tests" },
 		},
 	},
 	{ "folke/todo-comments.nvim", event = "VimEnter", dependencies = { "nvim-lua/plenary.nvim" }, opts = { signs = true } },
