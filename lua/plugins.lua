@@ -464,7 +464,7 @@ require("lazy").setup({
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 		opts = {
-			show_help = "no",
+			show_help = false,
 			debug = false,
 			disable_extra_info = "yes",
 			language = "English",
@@ -477,10 +477,10 @@ require("lazy").setup({
 			context = "buffers",
 			window = {
 				layout = "float",
-				width = 0.75,
-				height = 0.75,
-				border = "solid",
-				title = "LLM Chat",
+				border = "single",
+				width = 0.5,
+				height = 0.5,
+				title = "Buffer(s) Chat",
 			},
 		},
 		build = function()
