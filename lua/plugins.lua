@@ -7,28 +7,27 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup {
 	"tpope/vim-sleuth", -- auto-detect indent settings
-		{ "akinsho/toggleterm.nvim", version = "*", config = true, opts = { direction = "float" } },
+	{ "akinsho/toggleterm.nvim", version = "*", config = true, opts = { direction = "float" } },
 	{ "numToStr/Comment.nvim", opts = {} },
 	{
-  "folke/noice.nvim",
-  event = "VeryLazy",
-  opts = {
-  },
-  dependencies = {
-    "MunifTanjim/nui.nvim",
-    "rcarriga/nvim-notify",
-    }
-},
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+	},
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
-		 config = function()
-    require('lualine').setup {
-      options = {
-        theme = 'molokai' 
-      }
-    }
-  end
+		config = function()
+			require("lualine").setup {
+				options = {
+					theme = "molokai",
+				},
+			}
+		end,
 	},
 	{
 		"kdheepak/lazygit.nvim",
@@ -55,10 +54,11 @@ require("lazy").setup {
 			require("bufferline").setup {
 				options = {
 					diagnostics = "nvim_lsp",
-					offsets = { { filetype = "neo-tree", text = "File Explorer",text_align="left" ,padding = 1 } },
+					offsets = { { filetype = "neo-tree", text = "File Explorer", text_align = "left", padding = 1 } },
 					show_buffer_close_icons = true,
 					show_close_icon = true,
-			}}
+				},
+			}
 		end,
 	},
 	{
@@ -71,12 +71,12 @@ require("lazy").setup {
 			"3rd/image.nvim",
 		},
 		config = function()
-			require("neo-tree").setup ({
+			require("neo-tree").setup {
 				options = {
-					hijack_netrw_behavior = "open_default", 
-          use_libuv_file_watcher = true,
-				}
-			})
+					hijack_netrw_behavior = "open_default",
+					use_libuv_file_watcher = true,
+				},
+			}
 		end,
 	},
 	{
@@ -89,7 +89,7 @@ require("lazy").setup {
 	},
 	{
 		"ray-x/go.nvim",
-		dependencies = { 
+		dependencies = {
 			"ray-x/guihua.lua",
 			"neovim/nvim-lspconfig",
 			"nvim-treesitter/nvim-treesitter",
@@ -105,7 +105,7 @@ require("lazy").setup {
 		"lewis6991/gitsigns.nvim",
 		opts = {
 			signs = {
-				add = { text = "🟢"},
+				add = { text = "🟢" },
 				change = { text = "🔵" },
 				delete = { text = "🔴" },
 				topdelete = { text = "🟣" },
