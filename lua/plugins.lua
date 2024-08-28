@@ -76,6 +76,12 @@ require("lazy").setup {
 					hijack_netrw_behavior = "open_default",
 					use_libuv_file_watcher = true,
 				},
+				filesystem = {
+					filtered_items = {
+						visible = true,
+						hide_dotfiles = false,
+					},
+				},
 			}
 		end,
 	},
