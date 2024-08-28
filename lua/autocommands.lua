@@ -16,6 +16,14 @@ vim.api.nvim_create_autocmd("VimEnter", {
 	end,
 })
 
+vim.api.nvim_create_autocmd("BufEnter", {
+	pattern = "*",
+	group = vim.api.nvim_create_augroup("neo-tree-autogroup", { clear = true }),
+	callback = function()
+		require("neo-tree").update()
+	end,
+})
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 	callback = function(event)
