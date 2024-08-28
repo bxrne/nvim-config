@@ -55,11 +55,10 @@ require("lazy").setup {
 			require("bufferline").setup {
 				options = {
 					diagnostics = "nvim_lsp",
-					offsets = { { filetype = "NvimTree", text = "File Explorer", padding = 1 } },
+					offsets = { { filetype = "neo-tree", text = "File Explorer",text_align="left" ,padding = 1 } },
 					show_buffer_close_icons = true,
 					show_close_icon = true,
-				},
-			}
+			}}
 		end,
 	},
 	{
@@ -90,7 +89,7 @@ require("lazy").setup {
 	},
 	{
 		"ray-x/go.nvim",
-		dependencies = { -- optional packages
+		dependencies = { 
 			"ray-x/guihua.lua",
 			"neovim/nvim-lspconfig",
 			"nvim-treesitter/nvim-treesitter",
@@ -106,11 +105,11 @@ require("lazy").setup {
 		"lewis6991/gitsigns.nvim",
 		opts = {
 			signs = {
-				add = { text = "" },
-				change = { text = "" },
-				delete = { text = "" },
-				topdelete = { text = "" },
-				changedelete = { text = "" },
+				add = { text = "🟢"},
+				change = { text = "🔵" },
+				delete = { text = "🔴" },
+				topdelete = { text = "🟣" },
+				changedelete = { text = "🟣" },
 			},
 		},
 	},
