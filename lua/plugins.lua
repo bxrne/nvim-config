@@ -6,7 +6,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup {
-	"tpope/vim-sleuth", -- auto-detect indent settings
+	"tpope/vim-sleuth", -- NOTE: auto-detect indent settings
 	{ "akinsho/toggleterm.nvim", version = "*", config = true, opts = { direction = "float" } },
 	{ "numToStr/Comment.nvim", opts = {} },
 	{
@@ -19,14 +19,9 @@ require("lazy").setup {
 		},
 	},
 	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		"freddiehaddad/feline.nvim",
 		config = function()
-			require("lualine").setup {
-				options = {
-					theme = "molokai",
-				},
-			}
+			require("feline").setup()
 		end,
 	},
 	{
@@ -55,8 +50,8 @@ require("lazy").setup {
 				options = {
 					diagnostics = "nvim_lsp",
 					offsets = { { filetype = "neo-tree", text = "File Explorer", text_align = "left", padding = 1 } },
-					show_buffer_close_icons = true,
-					show_close_icon = true,
+					show_buffer_close_icons = false,
+					show_close_icon = false,
 				},
 			}
 		end,
