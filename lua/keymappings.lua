@@ -16,7 +16,7 @@ vim.keymap.set("n", "<leader>bn", ":enew<CR>", { desc = "Create [N]ew [B]uffer" 
 vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "[D]elete current [B]uffer" })
 vim.keymap.set("n", "<leader>bb", ":bprevious<CR>", { desc = "Go to [P]revious [B]uffer" })
 vim.keymap.set("n", "<leader>bf", ":bnext<CR>", { desc = "Go to [N]ext [B]uffer" })
-
+vim.keymap.set("n", "<leader>nc", "<cmd>lua require('notify').clear()<CR>", { desc = "Clear [N]otifi[C]ations" })
 vim.keymap.set("n", "<leader>1", ":BufferLineGoToBuffer 1<CR>", { desc = "Go to buffer 1" })
 vim.keymap.set("n", "<leader>2", ":BufferLineGoToBuffer 2<CR>", { desc = "Go to buffer 2" })
 vim.keymap.set("n", "<leader>3", ":BufferLineGoToBuffer 3<CR>", { desc = "Go to buffer 3" })
