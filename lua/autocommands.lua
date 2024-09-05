@@ -7,12 +7,18 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 vim.api.nvim_create_autocmd("VimEnter", {
-	pattern = "*",
-	group = vim.api.nvim_create_augroup("neo-tree-autogroup", { clear = true }),
 	callback = function()
-		if vim.fn.argc() == 0 then
-			require("neo-tree").show()
+		if vim.fn.isdirectory(vim.fn.argv()[1]) == 1 then
+			require("oil").open(vim.fn.argv()[1])
 		end
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "oil",
+	callback = function()
+		vim.opt_local.number = false
+		vim.opt_local.relativenumber = false
 	end,
 })
 

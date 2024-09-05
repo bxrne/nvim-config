@@ -43,13 +43,11 @@ require("lazy").setup {
 	{
 		"akinsho/bufferline.nvim",
 		version = "*",
-		dependencies = "nvim-tree/nvim-web-devicons",
 		opts = {},
 		config = function()
 			require("bufferline").setup {
 				options = {
 					diagnostics = "nvim_lsp",
-					offsets = { { filetype = "neo-tree", text = "File Explorer", text_align = "left", padding = 1 } },
 					show_buffer_close_icons = false,
 					show_close_icon = false,
 				},
@@ -57,27 +55,34 @@ require("lazy").setup {
 		end,
 	},
 	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons",
-			"MunifTanjim/nui.nvim",
-			"3rd/image.nvim",
+		"stevearc/oil.nvim",
+		opts = {
+			default_file_explorer = true,
+			cleanup_delay_ms = false,
+			view_options = {
+				show_hidden = true,
+			},
+			float = {
+				override = function()
+					local height = math.floor(vim.o.lines * 0.8)
+					local width = math.floor(vim.o.columns * 0.8)
+					return {
+						height = height,
+						width = width,
+					}
+				end,
+				padding = 2,
+				border = "rounded",
+				win_options = {
+					winblend = 10,
+				},
+			},
 		},
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-			require("neo-tree").setup {
-				options = {
-					hijack_netrw_behavior = "open_default",
-					use_libuv_file_watcher = true,
-				},
-				filesystem = {
-					filtered_items = {
-						visible = true,
-						hide_dotfiles = false,
-					},
-				},
-			}
+			require("oil").setup()
+			vim.g.loaded_netrw = 1
+			vim.g.loaded_netrwPlugin = 1
 		end,
 	},
 	{
@@ -177,11 +182,6 @@ require("lazy").setup {
 		config = function()
 			require("telescope").setup {
 				extensions = {
-					file_browser = {
-						theme = "ivy",
-						hijack_netrw = true,
-						hidden = true,
-					},
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown(),
 					},
@@ -189,7 +189,6 @@ require("lazy").setup {
 			}
 			pcall(require("telescope").load_extension, "fzf")
 			pcall(require("telescope").load_extension, "ui-select")
-			pcall(require("telescope").load_extension, "file_browser")
 
 			local builtin = require "telescope.builtin"
 			vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
