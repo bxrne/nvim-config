@@ -7,8 +7,17 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup {
 	"tpope/vim-sleuth", -- NOTE: auto-detect indent settings
+	{ "nvim-java/nvim-java" },
 	{ "akinsho/toggleterm.nvim", version = "*", config = true, opts = { direction = "float" } },
 	{ "numToStr/Comment.nvim", opts = {} },
+	{
+		"https://git.sr.ht/~nedia/auto-save.nvim",
+		event = { "BufReadPre" },
+		opts = {
+			events = { "InsertLeave", "BufLeave" },
+			silent = false,
+		},
+	},
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
@@ -59,6 +68,7 @@ require("lazy").setup {
 		opts = {
 			default_file_explorer = true,
 			cleanup_delay_ms = false,
+			skip_confirm_for_simple_edits = true,
 			view_options = {
 				show_hidden = true,
 			},
