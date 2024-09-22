@@ -15,8 +15,18 @@ require("lazy").setup {
 		event = { "BufReadPre" },
 		opts = {
 			events = { "InsertLeave", "BufLeave" },
-			silent = false,
+			silent = true,
 		},
+	},
+	{
+		"ThePrimeagen/harpoon",
+		lazy = false,
+		branch = "harpoon2",
+		init = function()
+			local harpoon = require "harpoon"
+			harpoon:setup()
+		end,
+		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{
 		"folke/noice.nvim",
@@ -50,47 +60,26 @@ require("lazy").setup {
 		},
 	},
 	{
-		"akinsho/bufferline.nvim",
-		version = "*",
-		opts = {},
-		config = function()
-			require("bufferline").setup {
-				options = {
-					diagnostics = "nvim_lsp",
-					show_buffer_close_icons = false,
-					show_close_icon = false,
-				},
-			}
-		end,
-	},
-	{
 		"stevearc/oil.nvim",
-		opts = {
-			default_file_explorer = true,
-			cleanup_delay_ms = false,
-			skip_confirm_for_simple_edits = true,
-			view_options = {
-				show_hidden = true,
-			},
-			float = {
-				override = function()
-					local height = math.floor(vim.o.lines * 0.8)
-					local width = math.floor(vim.o.columns * 0.8)
-					return {
-						height = height,
-						width = width,
-					}
-				end,
-				padding = 2,
-				border = "rounded",
-				win_options = {
-					winblend = 10,
-				},
-			},
-		},
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-			require("oil").setup()
+			require("oil").setup {
+				default_file_explorer = true,
+				skip_confirm_for_simple_edits = true,
+				watch_for_changes = true,
+				view_options = {
+					show_hidden = true,
+				},
+				float = {
+					max_height = 100,
+					max_width = 100,
+					preview_split = "right",
+					override = function(conf)
+						return conf
+					end,
+				},
+			}
+
 			vim.g.loaded_netrw = 1
 			vim.g.loaded_netrwPlugin = 1
 		end,

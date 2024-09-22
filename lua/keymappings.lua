@@ -1,26 +1,52 @@
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
+-- NOTE: Jump to problem
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
-vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
+-- NOTE: Move windows
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+
+-- NOTE: Toggleterm
 vim.keymap.set("n", "<leader>tt", "<cmd>lua require('toggleterm').toggle()<CR>", { desc = "Toggle [T]erminal" })
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
+-- NOTE: Oil as file explorer
 vim.keymap.set("n", "<leader>e", function()
 	require("oil").toggle_float()
 end, { desc = "Toggle Oil" })
-vim.keymap.set("n", "<leader>bn", ":enew<CR>", { desc = "Create [N]ew [B]uffer" })
-vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "[D]elete current [B]uffer" })
-vim.keymap.set("n", "<leader>bb", ":bprevious<CR>", { desc = "Go to [P]revious [B]uffer" })
-vim.keymap.set("n", "<leader>bf", ":bnext<CR>", { desc = "Go to [N]ext [B]uffer" })
-vim.keymap.set("n", "<leader>1", ":BufferLineGoToBuffer 1<CR>", { desc = "Go to buffer 1" })
-vim.keymap.set("n", "<leader>2", ":BufferLineGoToBuffer 2<CR>", { desc = "Go to buffer 2" })
-vim.keymap.set("n", "<leader>3", ":BufferLineGoToBuffer 3<CR>", { desc = "Go to buffer 3" })
-vim.keymap.set("n", "<leader>4", ":BufferLineGoToBuffer 4<CR>", { desc = "Go to buffer 4" })
-vim.keymap.set("n", "<leader>5", ":BufferLineGoToBuffer 5<CR>", { desc = "Go to buffer 5" })
-vim.keymap.set("n", "<leader>6", ":BufferLineGoToBuffer 6<CR>", { desc = "Go to buffer 6" })
-vim.keymap.set("n", "<leader>7", ":BufferLineGoToBuffer 7<CR>", { desc = "Go to buffer 7" })
-vim.keymap.set("n", "<leader>8", ":BufferLineGoToBuffer 8<CR>", { desc = "Go to buffer 8" })
-vim.keymap.set("n", "<leader>9", ":BufferLineGoToBuffer 9<CR>", { desc = "Go to buffer 9" })
+
+-- NOTE: Harpoon keymappings
+vim.keymap.set("n", "<leader>a", function()
+	require("harpoon"):list():add()
+end)
+
+vim.keymap.set("n", "<leader>h", function()
+	require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
+end)
+
+vim.keymap.set("n", "<leader>1", function()
+	require("harpoon"):list():select(1)
+end)
+
+vim.keymap.set("n", "<leader>2", function()
+	require("harpoon"):list():select(2)
+end)
+
+vim.keymap.set("n", "<leader>3", function()
+	require("harpoon"):list():select(3)
+end)
+
+vim.keymap.set("n", "<leader>5", function()
+	require("harpoon"):list():select(4)
+end)
+
+vim.keymap.set("n", "<leader>hp", function()
+	require("harpoon"):list():prev()
+end)
+vim.keymap.set("n", "<leader>hn", function()
+	require("harpoon"):list():next()
+end)
