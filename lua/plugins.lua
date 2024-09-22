@@ -72,7 +72,7 @@ require("lazy").setup {
 				},
 				float = {
 					max_height = 100,
-					max_width = 100,
+					max_width = 500,
 					preview_split = "right",
 					override = function(conf)
 						return conf
