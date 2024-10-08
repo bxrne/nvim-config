@@ -32,6 +32,12 @@ require("lazy").setup {
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		opts = {},
+		lsp = {
+			hover = { enabled = true },
+			signature_help = { enabled = true },
+			stylize_markdown = true, -- Enable stylized markdown for LSP hover and other documents
+			documentation = true,
+		},
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",

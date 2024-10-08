@@ -1,8 +1,8 @@
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- NOTE: Jump to problem
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
+vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
+vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
 
 -- NOTE: Move windows
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
@@ -26,6 +26,14 @@ end)
 
 vim.keymap.set("n", "<leader>h", function()
 	require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
+end)
+
+vim.keymap.set("n", "<leader>hr", function()
+	require("harpoon"):list():remove()
+end)
+
+vim.keymap.set("n", "<leader>hc", function()
+	require("harpoon"):list():clear()
 end)
 
 vim.keymap.set("n", "<leader>1", function()
