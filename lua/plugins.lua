@@ -44,9 +44,14 @@ require("lazy").setup {
 		},
 	},
 	{
-		"freddiehaddad/feline.nvim",
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-			require("feline").setup()
+			require("lualine").setup {
+				options = {
+					theme = require "neofusion.lualine",
+				},
+			}
 		end,
 	},
 	{
@@ -368,7 +373,7 @@ require("lazy").setup {
 		end,
 	},
 
-	{ "diegoulloao/neofusion.nvim", priority = 1000, config = true, opts = ... },
+	{ "diegoulloao/neofusion.nvim", priority = 1000, config = true, opts = {} },
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 		branch = "canary",
