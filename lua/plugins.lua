@@ -8,7 +8,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup {
 	"tpope/vim-sleuth", -- NOTE: auto-detect indent settings
 	{ "nvim-java/nvim-java" },
-	{ "akinsho/toggleterm.nvim", version = "*", config = true, opts = { direction = "float" } },
+	{ "akinsho/toggleterm.nvim", version = "*", config = true, opts = { direction = "float", shell = "zsh -i" } },
 	{ "numToStr/Comment.nvim", opts = {} },
 	{
 		"https://git.sr.ht/~nedia/auto-save.nvim",
@@ -83,7 +83,7 @@ require("lazy").setup {
 				},
 				float = {
 					max_height = 100,
-					max_width = 500,
+					max_width = 300,
 					preview_split = "right",
 					override = function(conf)
 						return conf
@@ -398,12 +398,20 @@ require("lazy").setup {
 				border = "single",
 				width = 0.75,
 				height = 0.75,
-				title = "LLM Chat",
+				title = "LLM",
 			},
 		},
 		event = "VeryLazy",
 	},
-	{ "folke/todo-comments.nvim", event = "VimEnter", dependencies = { "nvim-lua/plenary.nvim" }, opts = { signs = true } },
+	{
+		"folke/todo-comments.nvim",
+		event = "VimEnter",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {
+			signs = true,
+		},
+	},
+
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
