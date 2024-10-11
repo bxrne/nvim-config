@@ -368,13 +368,7 @@ require("lazy").setup {
 		end,
 	},
 
-	{
-		"folke/tokyonight.nvim",
-		priority = 1000,
-		init = function()
-			vim.cmd.colorscheme "tokyonight-night"
-		end,
-	},
+	{ "diegoulloao/neofusion.nvim", priority = 1000, config = true, opts = ... },
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 		branch = "canary",
