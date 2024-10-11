@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-
+vim.g.loaded_netrw = 0
+vim.g.embark_terminal_italics = 1
 vim.g.have_nerd_font = true
 
 vim.opt.termguicolors = true
@@ -24,8 +25,6 @@ vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
-
-vim.g.loaded_netrw = 0
 
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2

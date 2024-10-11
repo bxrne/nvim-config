@@ -44,12 +44,19 @@ require("lazy").setup {
 		},
 	},
 	{
+		"embark-theme/vim",
+		as = "embark", -- Rename package to 'embark'
+		config = function()
+			vim.cmd "colorscheme embark" -- Set colorscheme to embark
+		end,
+	},
+	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("lualine").setup {
 				options = {
-					theme = require "neofusion.lualine",
+					theme = "embark",
 				},
 			}
 		end,
@@ -373,7 +380,6 @@ require("lazy").setup {
 		end,
 	},
 
-	{ "diegoulloao/neofusion.nvim", priority = 1000, config = true, opts = {} },
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 		branch = "canary",
