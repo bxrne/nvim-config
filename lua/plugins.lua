@@ -7,8 +7,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup {
 	"tpope/vim-sleuth", -- NOTE: auto-detect indent settings
-	{ "nvim-java/nvim-java" },
-	{ "akinsho/toggleterm.nvim", version = "*", config = true, opts = { direction = "float", shell = "zsh -i" } },
+	{ "akinsho/toggleterm.nvim", version = "*", config = true, opts = { direction = "float" } },
 	{ "numToStr/Comment.nvim", opts = {} },
 	{
 		"https://git.sr.ht/~nedia/auto-save.nvim",
@@ -18,6 +17,7 @@ require("lazy").setup {
 			silent = true,
 		},
 	},
+
 	{
 		"ThePrimeagen/harpoon",
 		lazy = false,
@@ -26,7 +26,7 @@ require("lazy").setup {
 			local harpoon = require "harpoon"
 			harpoon:setup()
 		end,
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = { "nvim-lua/plenary.nvim", "nvim-lua/popup.nvim" },
 	},
 	{
 		"folke/noice.nvim",
@@ -35,9 +35,10 @@ require("lazy").setup {
 		lsp = {
 			hover = { enabled = true },
 			signature_help = { enabled = true },
-			stylize_markdown = true, -- Enable stylized markdown for LSP hover and other documents
+			stylize_markdown = true,
 			documentation = true,
 		},
+
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
@@ -45,9 +46,9 @@ require("lazy").setup {
 	},
 	{
 		"embark-theme/vim",
-		as = "embark", -- Rename package to 'embark'
+		as = "embark",
 		config = function()
-			vim.cmd "colorscheme embark" -- Set colorscheme to embark
+			vim.cmd "colorscheme embark"
 		end,
 	},
 	{
@@ -72,9 +73,6 @@ require("lazy").setup {
 		},
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-		},
-		keys = {
-			{ "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
 		},
 	},
 	{
@@ -107,7 +105,6 @@ require("lazy").setup {
 		config = function()
 			vim.g.copilot_no_tab_map = true
 			vim.g.copilot_context = "buffers"
-			vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 		end,
 	},
 	{
@@ -144,16 +141,16 @@ require("lazy").setup {
 				untracked = { text = "┆" },
 			},
 			signs_staged_enable = true,
-			signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-			numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
-			linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
-			word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
+			signcolumn = true,
+			numhl = true,
+			linehl = false,
+			word_diff = false,
 			watch_gitdir = {
 				follow_files = true,
 			},
 			auto_attach = true,
 			attach_to_untracked = false,
-			current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+			current_line_blame = false,
 			current_line_blame_opts = {
 				virt_text = true,
 				virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
@@ -175,10 +172,6 @@ require("lazy").setup {
 				col = 1,
 			},
 		},
-	},
-	{
-		"nvim-telescope/telescope-file-browser.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 	},
 	{
 		"nvim-telescope/telescope.nvim",
