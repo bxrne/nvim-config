@@ -17,7 +17,6 @@ require("lazy").setup {
 			silent = true,
 		},
 	},
-
 	{
 		"ThePrimeagen/harpoon",
 		lazy = false,
@@ -45,21 +44,10 @@ require("lazy").setup {
 		},
 	},
 	{
-		"embark-theme/vim",
-		as = "embark",
-		config = function()
-			vim.cmd "colorscheme embark"
-		end,
-	},
-	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			require("lualine").setup {
-				options = {
-					theme = "embark",
-				},
-			}
+		"freddiehaddad/feline.nvim",
+		opts = {},
+		config = function(_, opts)
+			require("feline").setup()
 		end,
 	},
 	{
@@ -103,7 +91,7 @@ require("lazy").setup {
 	{
 		"github/copilot.vim",
 		config = function()
-			vim.g.copilot_no_tab_map = true
+			vim.g.copilot_no_tab_map = false
 			vim.g.copilot_context = "buffers"
 		end,
 	},
