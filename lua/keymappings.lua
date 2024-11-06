@@ -4,9 +4,6 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
 
--- NOTE: Git UI
-vim.keymap.set("n", "<leader>lg", "<cmd>LazyGit<CR>", { desc = "Open [L]azyGit" })
-
 -- NOTE: Toggleterm
 vim.keymap.set("n", "<leader>tt", "<cmd>lua require('toggleterm').toggle()<CR>", { desc = "Toggle [T]erminal" })
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
