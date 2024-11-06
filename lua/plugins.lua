@@ -18,6 +18,13 @@ require("lazy").setup {
 		},
 	},
 	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		config = function()
+			vim.cmd.colorscheme "catppuccin-mocha"
+		end,
+	},
+	{
 		"ThePrimeagen/harpoon",
 		lazy = false,
 		branch = "harpoon2",
@@ -46,22 +53,6 @@ require("lazy").setup {
 	{
 		"freddiehaddad/feline.nvim",
 		opts = {},
-		config = function(_, opts)
-			require("feline").setup()
-		end,
-	},
-	{
-		"kdheepak/lazygit.nvim",
-		cmd = {
-			"LazyGit",
-			"LazyGitConfig",
-			"LazyGitCurrentFile",
-			"LazyGitFilter",
-			"LazyGitFilterCurrentFile",
-		},
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
 	},
 	{
 		"stevearc/oil.nvim",
@@ -94,20 +85,6 @@ require("lazy").setup {
 			vim.g.copilot_no_tab_map = false
 			vim.g.copilot_context = "buffers"
 		end,
-	},
-	{
-		"ray-x/go.nvim",
-		dependencies = {
-			"ray-x/guihua.lua",
-			"neovim/nvim-lspconfig",
-			"nvim-treesitter/nvim-treesitter",
-		},
-		config = function()
-			require("go").setup()
-		end,
-		event = { "CmdlineEnter" },
-		ft = { "go", "gomod" },
-		build = ':lua require("go.install").update_all_sync()',
 	},
 	{
 		"lewis6991/gitsigns.nvim",
