@@ -216,6 +216,7 @@ require("lazy").setup {
 				"ts_ls",
 				"gopls",
 				"rust_analyzer",
+				"groovyls",   
 			}
 
 			require("mason").setup()
@@ -261,7 +262,8 @@ require("lazy").setup {
 				typescript = { "prettier" },
 				go = { "gofmt" },
 				rust = { "rustfmt" },
-				-- Add other filetypes and formatters as needed
+				groovy = { "groovyformatter" },
+				ruby = { "rubocop" },
 			},
 		},
 	},
@@ -338,7 +340,6 @@ require("lazy").setup {
 			}
 		end,
 	},
-
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 		branch = "canary",
@@ -351,13 +352,14 @@ require("lazy").setup {
 			-- proxy = "socks5://127.0.0.1:3000",
 			temperature = 1,
 			model = "gpt-4o",
+			agent="copilot",
+			system_prompt = "You are an elite 10x software architect solving complex problems with surgical precision, zero tolerance for mediocrity, hyper-optimized solutions, anticipating edge cases, eliminating technical debt, architecting transformative code with ruthless efficiency. Validate assumptions, demand rigorous testing, use project context exclusively, never fabricate - deliver monumentally scalable, performance-first implementations that redefine technological possibilities. 🚀",
 			auto_insert_mode = true,
 			insert_at_end = true,
 			question_header = "[USER] ",
 			answer_header = "[LLM] ",
 			err_header = "[ERR] ",
-
-			context = "buffers",
+			context = "git",
 			window = {
 				layout = "float",
 				border = "single",
