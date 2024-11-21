@@ -90,12 +90,12 @@ require("lazy").setup {
 		"lewis6991/gitsigns.nvim",
 		opts = {
 			signs = {
-				add = { text = "┃" },
-				change = { text = "┃" },
-				delete = { text = "_" },
-				topdelete = { text = "‾" },
-				changedelete = { text = "~" },
-				untracked = { text = "┆" },
+				add          = { text = "" }, -- NF-md-add-circle
+				change       = { text = "柳" }, -- NF-fa-pencil-square
+				delete       = { text = "" }, -- NF-fa-minus-square
+				topdelete    = { text = "" },
+				changedelete = { text = "" },
+				untracked    = { text = "" },
 			},
 			signs_staged = {
 				add = { text = "┃" },
@@ -206,37 +206,36 @@ require("lazy").setup {
 			{ "folke/neodev.nvim", opts = {} },
 		},
 		config = function()
-			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+			local lspconfig = require("lspconfig")
+			local mason_lspconfig = require("mason-lspconfig")
+			local mason_tool_installer = require("mason-tool-installer")
 
 			local servers = {
-				lua_ls = {
-					settings = {
-						Lua = {
-							completion = {
-								callSnippet = "Replace",
-							},
-							diagnostics = { disable = { "missing-fields" } },
-						},
-					},
-				},
+				"lua_ls",
+				"pyright",
+				"ts_ls",
+				"gopls",
+				"rust_analyzer",
 			}
 
 			require("mason").setup()
 
-			local ensure_installed = vim.tbl_keys(servers or {})
-			vim.list_extend(ensure_installed, { "stylua" })
-			require("mason-tool-installer").setup { ensure_installed = ensure_installed }
-
-			require("mason-lspconfig").setup {
-				handlers = {
-					function(server_name)
-						local server = servers[server_name] or {}
-						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-						require("lspconfig")[server_name].setup(server)
-					end,
-				},
+			mason_tool_installer.setup {
+				ensure_installed = servers,
+				auto_update = true,
+				run_on_start = true,
 			}
+
+			mason_lspconfig.setup {
+				ensure_installed = servers,
+				automatic_installation = true,
+			}
+
+			for _, server in ipairs(servers) do
+				lspconfig[server].setup {
+					capabilities = require("cmp_nvim_lsp").default_capabilities(),
+				}
+			end
 		end,
 	},
 	{
@@ -253,15 +252,17 @@ require("lazy").setup {
 			},
 		},
 		opts = {
-			notify_on_error = false,
-			format_on_save = function(bufnr)
-				local disable_filetypes = { c = true, cpp = true }
-				return {
-					timeout_ms = 500,
-					lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
-				}
-			end,
-			formatters_by_ft = { lua = { "stylua" } },
+			notify_on_error = true,
+			format_on_save = true,
+			formatters_by_ft = {
+				lua = { "stylua" },
+				python = { "black" },
+				javascript = { "prettier" },
+				typescript = { "prettier" },
+				go = { "gofmt" },
+				rust = { "rustfmt" },
+				-- Add other filetypes and formatters as needed
+			},
 		},
 	},
 	{
@@ -348,7 +349,7 @@ require("lazy").setup {
 			disable_extra_info = "no",
 			language = "English",
 			-- proxy = "socks5://127.0.0.1:3000",
-			temperature = 0.1,
+			temperature = 1,
 			model = "gpt-4o",
 			auto_insert_mode = true,
 			insert_at_end = true,
