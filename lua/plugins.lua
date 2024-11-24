@@ -21,7 +21,10 @@ require("lazy").setup {
 		"catppuccin/nvim",
 		name = "catppuccin",
 		config = function()
-			vim.cmd.colorscheme "catppuccin-mocha"
+			require("catppuccin").setup {
+				flavour = "mocha",
+			}
+			vim.cmd.colorscheme "catppuccin"
 		end,
 	},
 	{
@@ -66,8 +69,8 @@ require("lazy").setup {
 					show_hidden = true,
 				},
 				float = {
-					max_height = 100,
-					max_width = 300,
+					max_width = 50,
+					max_height = 30,
 					preview_split = "right",
 					override = function(conf)
 						return conf
@@ -414,5 +417,17 @@ require("lazy").setup {
 			require("nvim-treesitter.install").prefer_git = true
 			require("nvim-treesitter.configs").setup(opts)
 		end,
+	},
+	-- Add lualine.nvim for an enhanced statusline
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {
+			options = {
+				theme = "catppuccin",
+				component_separators = '|',
+				section_separators = '',
+			},
+		},
 	},
 }

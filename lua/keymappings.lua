@@ -7,6 +7,8 @@ vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_next, { desc = "Go to next
 -- NOTE: Toggleterm
 vim.keymap.set("n", "<leader>tt", "<cmd>lua require('toggleterm').toggle()<CR>", { desc = "Toggle [T]erminal" })
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+vim.keymap.set("n", "<leader>ts", "<cmd>ToggleTerm direction=horizontal<CR>", { desc = "Toggle Terminal Horizontal" })
+vim.keymap.set("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<CR>", { desc = "Toggle Terminal Vertical" })
 
 -- NOTE: Oil as file explorer
 vim.keymap.set("n", "<leader>e", function()
