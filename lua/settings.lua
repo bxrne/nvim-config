@@ -44,4 +44,6 @@ if vim.fn.has('wsl') == 1 then
     },
     cache_enabled = 0,
   }
+  -- Enable Copilot MSYS compatibility
+  vim.g.copilot_assume_msys = true
 end

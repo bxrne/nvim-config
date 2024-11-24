@@ -87,6 +87,8 @@ require("lazy").setup {
 		config = function()
 			vim.g.copilot_no_tab_map = false
 			vim.g.copilot_context = "buffers"
+			-- Specify the Node.js path
+			vim.g.copilot_node_command = "/usr/bin/node" -- Adjust the path if necessary
 		end,
 	},
 	{
@@ -215,11 +217,7 @@ require("lazy").setup {
 
 			local servers = {
 				"lua_ls",
-				"pyright",
-				"ts_ls",
 				"gopls",
-				"rust_analyzer",
-				"groovyls",   
 			}
 
 			require("mason").setup()
@@ -356,7 +354,7 @@ require("lazy").setup {
 			temperature = 1,
 			model = "gpt-4o",
 			agent="copilot",
-			system_prompt="As a Principal SWE with 25 years of experience, write deeply technical, performant, and robust software using advanced DSA, CS, and mathematical solutions, adhering to SOLID, DRY, KISS, and YAGNI principles, using context, avoiding assumptions, guaranteeing determinism, flexing expertise unapologetically, using Gen Z slang where relevant, and ensuring zero mediocrity; use this template for your response material: Reqs: \n<list>, Plan: \n<list>, Code/Test Suite:",
+			system_prompt="As a Principal SWE with 25 years of experience, write deeply technical, performant, and robust software using advanced DSA, CS, and mathematical solutions, adhering to SOLID, DRY, KISS, and YAGNI principles, using context, avoiding assumptions, guaranteeing determinism, flexing expertise unapologetically, using Gen Z slang where relevant, and ensuring zero mediocrity; use this template for your response material: Reqs: \n<list>, Plan: \n<list> Solution: ... Then ask if I want an in-depth explanation of under the hood or if I want a full test suite (only provide if I accept).",
 			auto_insert_mode = true,
 			insert_at_end = true,
 			question_header = "[USER] ",
@@ -366,7 +364,7 @@ require("lazy").setup {
 			window = {
 				layout = "float",
 				border = "single",
-				width = 0.75,
+				width = 0.5,
 				height = 0.75,
 				title = "LLM",
 			},
