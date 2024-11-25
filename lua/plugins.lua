@@ -94,22 +94,7 @@ require("lazy").setup {
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {
-			signs = {
-				add          = { text = "" }, -- NF-md-add-circle
-				change       = { text = "柳" }, -- NF-fa-pencil-square
-				delete       = { text = "" }, -- NF-fa-minus-square
-				topdelete    = { text = "" },
-				changedelete = { text = "" },
-				untracked    = { text = "" },
-			},
-			signs_staged = {
-				add = { text = "┃" },
-				change = { text = "┃" },
-				delete = { text = "_" },
-				topdelete = { text = "‾" },
-				changedelete = { text = "~" },
-				untracked = { text = "┆" },
-			},
+
 			signs_staged_enable = true,
 			signcolumn = true,
 			numhl = true,
@@ -211,9 +196,9 @@ require("lazy").setup {
 			{ "folke/neodev.nvim", opts = {} },
 		},
 		config = function()
-			local lspconfig = require("lspconfig")
-			local mason_lspconfig = require("mason-lspconfig")
-			local mason_tool_installer = require("mason-tool-installer")
+			local lspconfig = require "lspconfig"
+			local mason_lspconfig = require "mason-lspconfig"
+			local mason_tool_installer = require "mason-tool-installer"
 
 			local servers = {
 				"lua_ls",
@@ -353,8 +338,8 @@ require("lazy").setup {
 			-- proxy = "socks5://127.0.0.1:3000",
 			temperature = 1,
 			model = "gpt-4o",
-			agent="copilot",
-			system_prompt="As a Principal SWE with 25 years of experience, write deeply technical, performant, and robust software using advanced DSA, CS, and mathematical solutions, adhering to SOLID, DRY, KISS, and YAGNI principles, using context, avoiding assumptions, guaranteeing determinism, flexing expertise unapologetically, using Gen Z slang where relevant, and ensuring zero mediocrity; use this template for your response material: Reqs: \n<list>, Plan: \n<list> Solution: ... Then ask if I want an in-depth explanation of under the hood or if I want a full test suite (only provide if I accept).",
+			agent = "copilot",
+			system_prompt = "As a Principal SWE with 25 years of experience, write deeply technical, performant, and robust software using advanced DSA, CS, and mathematical solutions, adhering to SOLID, DRY, KISS, and YAGNI principles, using context, avoiding assumptions, guaranteeing determinism, flexing expertise unapologetically, using Gen Z slang where relevant, and ensuring zero mediocrity; use this template for your response material: Reqs: \n<list>, Plan: \n<list> Solution: ... Then ask if I want an in-depth explanation of under the hood or if I want a full test suite (only provide if I accept).",
 			auto_insert_mode = true,
 			insert_at_end = true,
 			question_header = "[USER] ",
@@ -372,17 +357,17 @@ require("lazy").setup {
 		event = "VeryLazy",
 	},
 	{
-  "NeogitOrg/neogit",
-  dependencies = {
-    "nvim-lua/plenary.nvim",         -- required
-    "sindrets/diffview.nvim",        -- optional - Diff integration
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- required
+			"sindrets/diffview.nvim", -- optional - Diff integration
 
-    -- Only one of these is needed.
-    "nvim-telescope/telescope.nvim", -- optional
-    "ibhagwan/fzf-lua",              -- optional
-    "echasnovski/mini.pick",         -- optional
-  },
-  config = true
+			-- Only one of these is needed.
+			"nvim-telescope/telescope.nvim", -- optional
+			"ibhagwan/fzf-lua", -- optional
+			"echasnovski/mini.pick", -- optional
+		},
+		config = true,
 	},
 	{
 		"folke/todo-comments.nvim",
@@ -436,8 +421,8 @@ require("lazy").setup {
 		opts = {
 			options = {
 				theme = "catppuccin",
-				component_separators = '|',
-				section_separators = '',
+				component_separators = "|",
+				section_separators = "",
 			},
 		},
 	},
