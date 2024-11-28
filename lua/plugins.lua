@@ -86,9 +86,7 @@ require("lazy").setup {
 		"github/copilot.vim",
 		config = function()
 			vim.g.copilot_no_tab_map = false
-			vim.g.copilot_context = "buffers"
-			-- Specify the Node.js path
-			vim.g.copilot_node_command = "/usr/bin/node" -- Adjust the path if necessary
+			vim.g.copilot_context = "files"
 		end,
 	},
 	{
@@ -333,12 +331,10 @@ require("lazy").setup {
 		opts = {
 			show_help = false,
 			debug = false,
-			disable_extra_info = "no",
+			disable_extra_info = "yes",
 			language = "English",
-			-- proxy = "socks5://127.0.0.1:3000",
 			temperature = 1,
 			model = "gpt-4o",
-			agent = "copilot",
 			system_prompt = "As a Principal SWE with 25 years of experience, write deeply technical, performant, and robust software using advanced DSA, CS, and mathematical solutions, adhering to SOLID, DRY, KISS, and YAGNI principles, using context, avoiding assumptions, guaranteeing determinism, flexing expertise unapologetically, using Gen Z slang where relevant, and ensuring zero mediocrity; use this template for your response material: Reqs: \n<list>, Plan: \n<list> Solution: ... Then ask if I want an in-depth explanation of under the hood or if I want a full test suite (only provide if I accept).",
 			auto_insert_mode = true,
 			insert_at_end = true,
@@ -356,19 +352,7 @@ require("lazy").setup {
 		},
 		event = "VeryLazy",
 	},
-	{
-		"NeogitOrg/neogit",
-		dependencies = {
-			"nvim-lua/plenary.nvim", -- required
-			"sindrets/diffview.nvim", -- optional - Diff integration
 
-			-- Only one of these is needed.
-			"nvim-telescope/telescope.nvim", -- optional
-			"ibhagwan/fzf-lua", -- optional
-			"echasnovski/mini.pick", -- optional
-		},
-		config = true,
-	},
 	{
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
