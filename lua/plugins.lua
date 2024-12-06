@@ -7,6 +7,13 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup {
 	"tpope/vim-sleuth", -- NOTE: auto-detect indent settings
+	{
+		"echasnovski/mini.nvim",
+		version = false,
+		config = function()
+			require("mini.icons").setup()
+		end,
+	},
 	{ "akinsho/toggleterm.nvim", version = "*", config = true, opts = { direction = "float" } },
 	{ "numToStr/Comment.nvim", opts = {} },
 	{
@@ -71,7 +78,7 @@ require("lazy").setup {
 	},
 	{
 		"stevearc/oil.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		dependencies = { "echasnovski/mini.nvim" },
 		config = function()
 			require("oil").setup {
 				default_file_explorer = true,
@@ -79,6 +86,12 @@ require("lazy").setup {
 				watch_for_changes = true,
 				view_options = {
 					show_hidden = true,
+					is_hidden_file = function(name, _)
+						return vim.startswith(name, ".")
+					end,
+					is_always_hidden = function(_, _)
+						return false
+					end,
 				},
 				float = {
 					max_width = 50,
@@ -152,7 +165,7 @@ require("lazy").setup {
 				end,
 			},
 			{ "nvim-telescope/telescope-ui-select.nvim" },
-			{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
+			{ "echasnovski/mini.nvim" },
 		},
 		config = function()
 			require("telescope").setup {
@@ -413,12 +426,13 @@ require("lazy").setup {
 	-- Add lualine.nvim for an enhanced statusline
 	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		dependencies = { "echasnovski/mini.nvim" },
 		opts = {
 			options = {
 				theme = "catppuccin",
 				component_separators = "|",
 				section_separators = "",
+				icons_enabled = true,
 			},
 		},
 	},
