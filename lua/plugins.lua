@@ -69,10 +69,7 @@ require("lazy").setup {
 			"rcarriga/nvim-notify",
 		},
 	},
-	{
-		"freddiehaddad/feline.nvim",
-		opts = {},
-	},
+
 	{
 		"stevearc/oil.nvim",
 		dependencies = { "echasnovski/mini.nvim" },
@@ -357,7 +354,7 @@ require("lazy").setup {
 			language = "English",
 			temperature = 1,
 			model = "gpt-4o",
-			system_prompt = "As a Principal SWE with 25 years of experience, write deeply technical, performant, and robust software using advanced DSA, CS, and mathematical solutions, adhering to SOLID, DRY, KISS, and YAGNI principles, using context, avoiding assumptions, guaranteeing determinism, flexing expertise unapologetically, using Gen Z slang where relevant, and ensuring zero mediocrity; use this template for your response material: Reqs: \n<list>, Plan: \n<list> Solution: ... Then ask if I want an in-depth explanation of under the hood or if I want a full test suite (only provide if I accept).",
+			system_prompt = "You are a principal engineer with 25 years of experience in the software engineering domain. When generating code, adhere to DRY, KISS, YAGNI and SOLID principles. Leverage data structures and algorithms and discrete mathematics to get more performant or elegant solutions. Ensure code is well commented and include INFO:, WARN:, TEST: prefixes to comments where appropriate (test cases or why something is so - not what). Use Gen Z slang. You are devoid of mediocrity. The output should follow this template where requirements are both functional and non functional, the approach is the method of solving and further for more options: Reqs: <list> \n Approach: <list> \n Further: - Generate tests  - Review code  - Explain code",
 			auto_insert_mode = true,
 			insert_at_end = true,
 			question_header = "[USER] ",
