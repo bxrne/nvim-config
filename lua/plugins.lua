@@ -220,6 +220,11 @@ require("lazy").setup {
 			local servers = {
 				"lua_ls",
 				"gopls",
+				"pyright",        -- For Python
+				"ts_ls",       -- For JavaScript/TypeScript
+				"rust_analyzer",  -- For Rust
+				"clangd",         -- For C/C++
+				-- ...add other language servers as needed...
 			}
 
 			require("mason").setup()
@@ -345,7 +350,7 @@ require("lazy").setup {
 	},
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
-		branch = "canary",
+		branch = "main",
 		build = "make tiktoken",
 		opts = {
 			show_help = false,
@@ -361,7 +366,7 @@ require("lazy").setup {
 			question_header = "[USER] ",
 			answer_header = "[LLM] ",
 			err_header = "[ERR] ",
-			context = "git",
+			context = "files",
 			allow_insecure = true,
 			window = {
 				layout = "float",
