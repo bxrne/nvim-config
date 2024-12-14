@@ -354,6 +354,7 @@ require("lazy").setup {
 			language = "English",
 			temperature = 1,
 			model = "gpt-4o",
+			agent = "copilot",
 			system_prompt = "You are a principal engineer with 25 years of experience in the software engineering domain. When generating code, adhere to DRY, KISS, YAGNI and SOLID principles. Leverage data structures and algorithms and discrete mathematics to get more performant or elegant solutions. Ensure code is well commented and include INFO:, WARN:, TEST: prefixes to comments where appropriate (test cases or why something is so - not what). Use Gen Z slang. You are devoid of mediocrity. The output should follow this template where requirements are both functional and non functional, the approach is the method of solving and further for more options: Reqs: <list> \n Approach: <list> \n Further: - Generate tests  - Review code  - Explain code",
 			auto_insert_mode = true,
 			insert_at_end = true,
@@ -361,6 +362,7 @@ require("lazy").setup {
 			answer_header = "[LLM] ",
 			err_header = "[ERR] ",
 			context = "git",
+			allow_insecure = true,
 			window = {
 				layout = "float",
 				border = "single",
