@@ -1,9 +1,5 @@
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
--- NOTE: Jump to problem
-vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
-
 -- NOTE: Toggleterm
 vim.keymap.set("n", "<leader>tt", "<cmd>lua require('toggleterm').toggle()<CR>", { desc = "Toggle [T]erminal" })
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
@@ -60,3 +56,14 @@ vim.keymap.set("n", "<leader>cc", "<cmd>CopilotChat<CR>", { desc = "Chat with cu
 vim.keymap.set("n", "<leader>ct", "<cmd>CopilotChatTests<CR>", { desc = "Generate tests" })
 vim.keymap.set("n", "<leader>cf", "<cmd>CopilotChatFix<CR>", { desc = "Fix current buffer" })
 vim.keymap.set("n", "<leader>cd", "<cmd>CopilotChatDebug<CR>", { desc = "Debug current buffer" })
+
+-- NOTE: coc.nvim key mappings
+vim.keymap.set("n", "gd", "<Plug>(coc-definition)", { desc = "Go to definition" })
+vim.keymap.set("n", "gr", "<Plug>(coc-references)", { desc = "Go to references" })
+vim.keymap.set("n", "gi", "<Plug>(coc-implementation)", { desc = "Go to implementation" })
+vim.keymap.set("n", "gy", "<Plug>(coc-type-definition)", { desc = "Go to type definition" })
+vim.keymap.set("n", "K",  "<cmd>call CocActionAsync('doHover')<CR>", { desc = "Show documentation" })
+vim.keymap.set("n", "<leader>rn", "<Plug>(coc-rename)", { desc = "Rename symbol" })
+vim.keymap.set("n", "<leader>ca", "<Plug>(coc-codeaction)", { desc = "Code action" })
+vim.keymap.set("n", "<leader>dn", "<Plug>(coc-diagnostic-next)", { desc = "Go to next diagnostic message" })
+vim.keymap.set("n", "<leader>dp", "<Plug>(coc-diagnostic-prev)", { desc = "Go to previous diagnostic message" })

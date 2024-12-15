@@ -204,48 +204,9 @@ require("lazy").setup {
 		end,
 	},
 	{
-		"neovim/nvim-lspconfig",
-		dependencies = {
-			{ "williamboman/mason.nvim", config = true },
-			"williamboman/mason-lspconfig.nvim",
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
-			{ "j-hui/fidget.nvim", opts = {} },
-			{ "folke/neodev.nvim", opts = {} },
-		},
-		config = function()
-			local lspconfig = require "lspconfig"
-			local mason_lspconfig = require "mason-lspconfig"
-			local mason_tool_installer = require "mason-tool-installer"
-
-			local servers = {
-				"lua_ls",
-				"gopls",
-				"pyright",        -- For Python
-				"ts_ls",       -- For JavaScript/TypeScript
-				"rust_analyzer",  -- For Rust
-				"clangd",         -- For C/C++
-				-- ...add other language servers as needed...
-			}
-
-			require("mason").setup()
-
-			mason_tool_installer.setup {
-				ensure_installed = servers,
-				auto_update = true,
-				run_on_start = true,
-			}
-
-			mason_lspconfig.setup {
-				ensure_installed = servers,
-				automatic_installation = true,
-			}
-
-			for _, server in ipairs(servers) do
-				lspconfig[server].setup {
-					capabilities = require("cmp_nvim_lsp").default_capabilities(),
-				}
-			end
-		end,
+			"neoclide/coc.nvim",
+			branch = "release",
+			event = "VimEnter",
 	},
 	{
 		"stevearc/conform.nvim",
@@ -274,79 +235,6 @@ require("lazy").setup {
 				ruby = { "rubocop" },
 			},
 		},
-	},
-	{
-		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
-		dependencies = {
-			{
-				"L3MON4D3/LuaSnip",
-				build = (function()
-					if vim.fn.has "win32" == 1 or vim.fn.executable "make" == 0 then
-						return
-					end
-					return "make install_jsregexp"
-				end)(),
-			},
-			"saadparwaiz1/cmp_luasnip",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-path",
-		},
-		config = function()
-			local cmp = require "cmp"
-			local luasnip = require "luasnip"
-			luasnip.config.setup {}
-
-			cmp.setup {
-				snippet = {
-					expand = function(args)
-						luasnip.lsp_expand(args.body)
-					end,
-				},
-				completion = { completeopt = "menu,menuone,noinsert" },
-				mapping = cmp.mapping.preset.insert {
-					["<C-n>"] = cmp.mapping.select_next_item(),
-					["<C-p>"] = cmp.mapping.select_prev_item(),
-					["<C-b>"] = cmp.mapping.scroll_docs(-4),
-					["<C-f>"] = cmp.mapping.scroll_docs(4),
-					["<C-y>"] = cmp.mapping.confirm { select = true },
-					["<C-Space>"] = cmp.mapping.complete {},
-					["<C-l>"] = cmp.mapping(function()
-						if luasnip.expand_or_locally_jumpable() then
-							luasnip.expand_or_jump()
-						end
-					end, { "i", "s" }),
-					["<C-h>"] = cmp.mapping(function()
-						if luasnip.locally_jumpable(-1) then
-							luasnip.jump(-1)
-						end
-					end, { "i", "s" }),
-					["<Tab>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_next_item()
-						elseif luasnip.expand_or_jumpable() then
-							luasnip.expand_or_jump()
-						else
-							fallback()
-						end
-					end, { "i", "s" }),
-					["<S-Tab>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_prev_item()
-						elseif luasnip.jumpable(-1) then
-							luasnip.jump(-1)
-						else
-							fallback()
-						end
-					end, { "i", "s" }),
-				},
-				sources = {
-					{ name = "nvim_lsp" },
-					{ name = "luasnip" },
-					{ name = "path" },
-				},
-			}
-		end,
 	},
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
