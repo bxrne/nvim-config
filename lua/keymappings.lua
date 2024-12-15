@@ -67,3 +67,26 @@ vim.keymap.set("n", "<leader>rn", "<Plug>(coc-rename)", { desc = "Rename symbol"
 vim.keymap.set("n", "<leader>ca", "<Plug>(coc-codeaction)", { desc = "Code action" })
 vim.keymap.set("n", "<leader>dn", "<Plug>(coc-diagnostic-next)", { desc = "Go to next diagnostic message" })
 vim.keymap.set("n", "<leader>dp", "<Plug>(coc-diagnostic-prev)", { desc = "Go to previous diagnostic message" })
+
+-- NOTE: Tab management key mappings
+vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<CR>", { desc = "[T]ab [N]ew" })
+vim.keymap.set("n", "<leader>tq", "<cmd>tabclose<CR>", { desc = "[T]ab [Q]uit" })
+vim.keymap.set("n", "<leader>to", "<cmd>tabonly<CR>", { desc = "[T]ab [O]nly" })
+vim.keymap.set("n", "<leader>tl", "<cmd>tabnext<CR>", { desc = "[T]ab [L]ast" })
+vim.keymap.set("n", "<leader>th", "<cmd>tabprevious<CR>", { desc = "[T]ab [H]ome" })
+vim.keymap.set("n", "<leader>tm", "<cmd>tabmove<CR>", { desc = "[T]ab [M]ove" })
+
+-- Navigate between tabs
+vim.keymap.set("n", "]t", "<cmd>tabnext<CR>", { desc = "Next tab" })
+vim.keymap.set("n", "[t", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
+
+-- Go to tab by number (without conflicting with Harpoon mappings)
+vim.keymap.set("n", "<leader>t1", "1gt", { desc = "[T]ab 1" })
+vim.keymap.set("n", "<leader>t2", "2gt", { desc = "[T]ab 2" })
+vim.keymap.set("n", "<leader>t3", "3gt", { desc = "[T]ab 3" })
+vim.keymap.set("n", "<leader>t4", "4gt", { desc = "[T]ab 4" })
+vim.keymap.set("n", "<leader>t5", "5gt", { desc = "[T]ab 5" })
+vim.keymap.set("n", "<leader>t6", "6gt", { desc = "[T]ab 6" })
+vim.keymap.set("n", "<leader>t7", "7gt", { desc = "[T]ab 7" })
+vim.keymap.set("n", "<leader>t8", "8gt", { desc = "[T]ab 8" })
+vim.keymap.set("n", "<leader>t9", "9gt", { desc = "[T]ab 9" })
