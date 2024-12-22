@@ -119,7 +119,7 @@ require("lazy").setup {
 			},
 			auto_attach = true,
 			attach_to_untracked = false,
-			current_line_blame = false,
+			current_line_blame = true, -- Enable git blame for current line
 			current_line_blame_opts = {
 				virt_text = true,
 				virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
@@ -309,17 +309,10 @@ require("lazy").setup {
 			require("nvim-treesitter.configs").setup(opts)
 		end,
 	},
-	-- Add lualine.nvim for an enhanced statusline
 	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = { "echasnovski/mini.nvim" },
-		opts = {
-			options = {
-				theme = "catppuccin",
-				component_separators = "|",
-				section_separators = "",
-				icons_enabled = true,
-			},
-		},
+		'nvim-lualine/lualine.nvim',
+		config = function()
+			require('custom/bubbles')
+		end,
 	},
 }
