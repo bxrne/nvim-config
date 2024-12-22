@@ -14,7 +14,7 @@ require("lazy").setup {
 			require("mini.icons").setup()
 		end,
 	},
-	{ "akinsho/toggleterm.nvim", version = "*", config = true, opts = { direction = "float" } },
+	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 	{ "numToStr/Comment.nvim", opts = {} },
 	{
 		"https://git.sr.ht/~nedia/auto-save.nvim",
@@ -33,16 +33,13 @@ require("lazy").setup {
 			require("alpha").setup(startify.config)
 		end,
 	},
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		config = function()
-			require("catppuccin").setup {
-				flavour = "mocha",
-			}
-			vim.cmd.colorscheme "catppuccin"
-		end,
-	},
+{ 
+	"rose-pine/neovim", 
+	name = "rose-pine",
+	config = function()
+		vim.cmd("colorscheme rose-pine")
+	end
+},
 	{
 		"ThePrimeagen/harpoon",
 		lazy = false,
