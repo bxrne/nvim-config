@@ -16,6 +16,12 @@ require("lazy").setup {
 	},
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 	{ "numToStr/Comment.nvim", opts = {} },
+{
+    "nvim-neorg/neorg",
+    lazy = false, 
+    version = "*", 
+    config = true,
+},
 	{
 		"https://git.sr.ht/~nedia/auto-save.nvim",
 		event = { "BufReadPre" },
