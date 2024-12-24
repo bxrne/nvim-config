@@ -16,12 +16,6 @@ require("lazy").setup {
 	},
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 	{ "numToStr/Comment.nvim", opts = {} },
-{
-    "nvim-neorg/neorg",
-    lazy = false, 
-    version = "*", 
-    config = true,
-},
 	{
 		"https://git.sr.ht/~nedia/auto-save.nvim",
 		event = { "BufReadPre" },
@@ -319,6 +313,14 @@ require("lazy").setup {
 		'nvim-lualine/lualine.nvim',
 		config = function()
 			require('custom/bubbles')
+		end,
+	},
+	{
+		"lervag/vimtex",
+		config = function()
+			vim.g.vimtex_view_method = 'skim'
+			vim.g.vimtex_compiler_method = 'latexmk'
+			vim.g.vimtex_syntax_enabled = 0 -- Disable vimtex syntax to avoid conflict with TreeSitter
 		end,
 	},
 }
