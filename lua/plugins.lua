@@ -314,14 +314,16 @@ require("lazy").setup {
   },
 		sections = {
     lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
-    lualine_b = { 'filename', 'branch' },
+    lualine_b = { 'filename', 'progress'},
     lualine_c = {
-      '%=', --[[ add your center compoentnts here in place of this comment ]]
+      'diff',
+			{ 'diagnostics', sources = { 'nvim_lsp' } },
+			{ 'gitsigns', padding = { left = 0, right = 1 } },
     },
-    lualine_x = {},
-    lualine_y = { 'filetype', 'progress' },
+    lualine_x = {   },
+    lualine_y = { 'branch', 'location' },
     lualine_z = {
-      { 'location', separator = { right = '' }, left_padding = 2 },
+      { 'filetype', separator = { right = '' }, left_padding = 2 },
     },
   },
   inactive_sections = {
@@ -332,17 +334,9 @@ require("lazy").setup {
     lualine_y = {},
     lualine_z = { 'location' },
   },
-  tabline = {},
   extensions = { 'fugitive', 'nvim-tree', "oil", "toggleterm" },
 		
 	},
 },
-	{
-		"lervag/vimtex",
-		config = function()
-			vim.g.vimtex_view_method = 'skim'
-			vim.g.vimtex_compiler_method = 'latexmk'
-			vim.g.vimtex_syntax_enabled = 0 -- Disable vimtex syntax to avoid conflict with TreeSitter
-		end,
-	},
+
 }
