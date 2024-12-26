@@ -24,15 +24,6 @@ require("lazy").setup {
 			silent = true,
 		},
 	},
-	{
-		"goolord/alpha-nvim",
-		dependencies = { "echasnovski/mini.nvim" },
-		config = function()
-			local startify = require "alpha.themes.startify"
-			startify.file_icons.provider = "mini"
-			require("alpha").setup(startify.config)
-		end,
-	},
 { 
 	"rose-pine/neovim", 
 	name = "rose-pine",
