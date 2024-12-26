@@ -34,9 +34,14 @@ require("lazy").setup {
 		end,
 	},
 { 
-	 "nyoom-engineering/oxocarbon.nvim",
+	"rose-pine/neovim", 
+	name = "rose-pine",
+		opts= {
+			variant = "main",
+			dark_variant = "main",
+		},
 	config = function()
-		vim.cmd("colorscheme oxocarbon")
+		vim.cmd("colorscheme rose-pine")
 	end
 },
 	{

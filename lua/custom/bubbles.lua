@@ -3,37 +3,11 @@
 -- MIT license, see LICENSE for more details.
 
 -- stylua: ignore
-local colors = {
-  blue   = '#9CCFD8',   -- foam
-  cyan   = '#9CCFD8',   -- foam
-  black  = '#191724',   -- base
-  white  = '#e0def4',   -- text
-  red    = '#eb6f92',   -- rose
-  violet = '#c4a7e7',   -- iris
-  grey   = '#303030',   -- surface1
-}
 
-local bubbles_theme = {
-  normal = {
-    a = { fg = colors.black, bg = colors.violet },
-    b = { fg = colors.white, bg = colors.grey },
-    c = { fg = colors.white },
-  },
-
-  insert = { a = { fg = colors.black, bg = colors.blue } },
-  visual = { a = { fg = colors.black, bg = colors.cyan } },
-  replace = { a = { fg = colors.black, bg = colors.red } },
-
-  inactive = {
-    a = { fg = colors.white, bg = colors.black },
-    b = { fg = colors.white, bg = colors.black },
-    c = { fg = colors.white },
-  },
-}
 
 require('lualine').setup {
   options = {
-    theme = "oxocarbon",
+    theme = "rose-pine",
     component_separators = '',
     section_separators = { left = '', right = '' },
   },
