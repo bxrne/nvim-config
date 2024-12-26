@@ -317,8 +317,8 @@ require("lazy").setup {
     lualine_b = { 'filename', 'progress'},
     lualine_c = {
       'diff',
-			{ 'diagnostics', sources = { 'nvim_lsp' } },
-			{ 'gitsigns', padding = { left = 0, right = 1 } },
+			{ 'diagnostics', sources = { 'nvim_lsp', 'coc' }, always_visible = true},
+			{ 'gitsigns', padding = { left = 0, right = 1 }, always_visible = true },
     },
     lualine_x = {   },
     lualine_y = { 'branch', 'location' },
