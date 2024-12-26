@@ -333,7 +333,8 @@ require("lazy").setup {
     lualine_z = { 'location' },
   },
   tabline = {},
-  extensions = {},
+  extensions = { 'fugitive', 'nvim-tree', "oil", "toggleterm" },
+		
 	},
 },
 	{
