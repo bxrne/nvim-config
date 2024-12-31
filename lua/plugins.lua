@@ -196,11 +196,6 @@ require("lazy").setup {
 		end,
 	},
 	{
-			"neoclide/coc.nvim",
-			branch = "release",
-			event = "VimEnter",
-	},
-	{
 		"stevearc/conform.nvim",
 		lazy = false,
 		keys = {
@@ -342,5 +337,32 @@ require("lazy").setup {
 		
 	},
 },
-
+	{
+		'neovim/nvim-lspconfig',
+		dependencies = {
+			'williamboman/mason.nvim',
+			'williamboman/mason-lspconfig.nvim',
+			'hrsh7th/cmp-nvim-lsp',
+			'hrsh7th/cmp-buffer',
+			'hrsh7th/cmp-path',
+			'hrsh7th/cmp-cmdline',
+			'hrsh7th/nvim-cmp',
+			'L3MON4D3/LuaSnip',
+			'saadparwaiz1/cmp_luasnip',
+		},
+	},
+	{
+		"williamboman/mason.nvim",
+		cmd = "Mason",
+		keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
+		build = ":MasonUpdate",
+		opts = {
+			ensure_installed = {
+				"gopls",
+				"stylua",
+				"shellcheck",
+				"shfmt",
+			},
+		},
+	},
 }
