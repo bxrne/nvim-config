@@ -301,25 +301,23 @@ require("lazy").setup {
 		opts = {
 			options = {
 				theme = "auto",
-				component_separators = "",
-				section_separators = { left = "", right = "" },
 			},
 			sections = {
-				lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
-				lualine_b = { "filename", "progress" },
+				lualine_a = { { "mode", right_padding = 2 } },
+				lualine_b = { "branch", "filename" },
 				lualine_c = {
 					"diff",
-					{
-						"diagnostics",
-						sources = { "nvim_lsp", "coc" },
-						always_visible = true,
-					},
 					{ "gitsigns" },
 				},
 				lualine_x = {},
-				lualine_y = { "branch", "location" },
+				lualine_y = { {
+					"diagnostics",
+					sources = { "nvim_lsp" },
+					always_visible = true,
+				} },
 				lualine_z = {
-					{ "filetype", separator = { right = "" }, left_padding = 2 },
+					{ "filetype", left_padding = 2 },
+					"location",
 				},
 			},
 			inactive_sections = {
@@ -328,7 +326,7 @@ require("lazy").setup {
 				lualine_c = {},
 				lualine_x = {},
 				lualine_y = {},
-				lualine_z = { "location" },
+				lualine_z = {},
 			},
 			extensions = { "fugitive", "nvim-tree", "oil", "toggleterm" },
 		},
