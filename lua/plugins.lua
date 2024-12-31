@@ -24,17 +24,6 @@ require("lazy").setup {
 			silent = true,
 		},
 	},
-{ 
-	"rose-pine/neovim", 
-	name = "rose-pine",
-		opts= {
-			variant = "main",
-			dark_variant = "main",
-		},
-	config = function()
-		vim.cmd("colorscheme rose-pine")
-	end
-},
 	{
 		"ThePrimeagen/harpoon",
 		lazy = false,
@@ -300,55 +289,62 @@ require("lazy").setup {
 		end,
 	},
 	{
-		'nvim-lualine/lualine.nvim',
-		opts = {
-	 options = {
-    theme = "rose-pine",
-    component_separators = '',
-    section_separators = { left = '', right = '' },
-  },
-		sections = {
-    lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
-    lualine_b = { 'filename', 'progress'},
-    lualine_c = {
-			'diff',
-			{ 
-				'diagnostics', 
-				sources = { 'nvim_lsp', 'coc'}, 
-				always_visible = true,
-			},
-			{'gitsigns'},
-    },
-    lualine_x = {   },
-    lualine_y = { 'branch', 'location' },
-    lualine_z = {
-      { 'filetype', separator = { right = '' }, left_padding = 2 },
-    },
-  },
-  inactive_sections = {
-    lualine_a = { 'filename' },
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = { 'location' },
-  },
-  extensions = { 'fugitive', 'nvim-tree', "oil", "toggleterm" },
-		
+		"scottmckendry/cyberdream.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.cmd "colorscheme cyberdream"
+		end,
 	},
-},
 	{
-		'neovim/nvim-lspconfig',
+		"nvim-lualine/lualine.nvim",
+		opts = {
+			options = {
+				theme = "auto",
+				component_separators = "",
+				section_separators = { left = "", right = "" },
+			},
+			sections = {
+				lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
+				lualine_b = { "filename", "progress" },
+				lualine_c = {
+					"diff",
+					{
+						"diagnostics",
+						sources = { "nvim_lsp", "coc" },
+						always_visible = true,
+					},
+					{ "gitsigns" },
+				},
+				lualine_x = {},
+				lualine_y = { "branch", "location" },
+				lualine_z = {
+					{ "filetype", separator = { right = "" }, left_padding = 2 },
+				},
+			},
+			inactive_sections = {
+				lualine_a = { "filename" },
+				lualine_b = {},
+				lualine_c = {},
+				lualine_x = {},
+				lualine_y = {},
+				lualine_z = { "location" },
+			},
+			extensions = { "fugitive", "nvim-tree", "oil", "toggleterm" },
+		},
+	},
+	{
+		"neovim/nvim-lspconfig",
 		dependencies = {
-			'williamboman/mason.nvim',
-			'williamboman/mason-lspconfig.nvim',
-			'hrsh7th/cmp-nvim-lsp',
-			'hrsh7th/cmp-buffer',
-			'hrsh7th/cmp-path',
-			'hrsh7th/cmp-cmdline',
-			'hrsh7th/nvim-cmp',
-			'L3MON4D3/LuaSnip',
-			'saadparwaiz1/cmp_luasnip',
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
+			"hrsh7th/nvim-cmp",
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
 		},
 	},
 	{
