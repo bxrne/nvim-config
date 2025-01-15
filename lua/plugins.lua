@@ -14,6 +14,13 @@ require("lazy").setup {
 			require("mini.icons").setup()
 		end,
 	},
+	{
+		"bxrne/was.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		config = true,
+	},
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 	{ "numToStr/Comment.nvim", opts = {} },
 	{
