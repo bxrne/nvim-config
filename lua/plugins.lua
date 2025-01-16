@@ -20,6 +20,9 @@ require("lazy").setup {
 			"nvim-lua/plenary.nvim",
 		},
 		config = true,
+		opts = {
+			defer_time = 2500,
+		},
 	},
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 	{ "numToStr/Comment.nvim", opts = {} },
@@ -29,7 +32,7 @@ require("lazy").setup {
 		opts = {
 			events = { "InsertLeave", "BufLeave" },
 			silent = true,
-		},
+	},
 	},
 	{
 		"ThePrimeagen/harpoon",
