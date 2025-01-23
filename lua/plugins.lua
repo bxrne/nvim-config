@@ -4,7 +4,7 @@ if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system { "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath }
 end
 vim.opt.rtp:prepend(lazypath)
-
+-- write a new  
 require("lazy").setup {
 	"tpope/vim-sleuth", -- NOTE: auto-detect indent settings
 	{
@@ -44,61 +44,56 @@ require("lazy").setup {
 		end,
 		dependencies = { "nvim-lua/plenary.nvim", "nvim-lua/popup.nvim" },
 	},
-	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
+{ 
+    "stevearc/oil.nvim",
+    dependencies = { "echasnovski/mini.nvim" },
+    config = function()
+        require("oil").setup {
+            default_file_explorer = true,
+            skip_confirm_for_simple_edits = true,
+            watch_for_changes = true,
+            float = {
+                padding = 2,
+                max_width = 80,  
+                max_height = 30,
+                border = "rounded",
+                win_options = {
+                    winblend = 10,
+                },
+                override = function(conf)
+                    local columns = vim.o.columns
+                    local rows = vim.o.lines
+                    conf.row = (rows - conf.height) / 2
+                    conf.col = (columns - conf.width) / 2
+                    return conf
+                end,
+                preview_split = "right",
+            },
+            progress = {
+                max_width = 0.9,
+                min_width = 0.3,
+                width = nil,
+                max_height = 0.9,
+                min_height = 0.3,
+                height = nil,
+            },
+        }
+        vim.g.loaded_netrw = 1
+        vim.g.loaded_netrwPlugin = 1
+    end,
+},
+
+
+ {
+               "github/copilot.vim",
+               config = function()
+                       vim.g.copilot_no_tab_map = false
+                       vim.g.copilot_context = "files"
+               end,
 		opts = {},
-		lsp = {
-			hover = { enabled = true },
-			signature_help = { enabled = true },
-			stylize_markdown = true,
-			documentation = true,
-		},
+       },
 
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
-		},
-	},
 
-	{
-		"stevearc/oil.nvim",
-		dependencies = { "echasnovski/mini.nvim" },
-		config = function()
-			require("oil").setup {
-				default_file_explorer = true,
-				skip_confirm_for_simple_edits = true,
-				watch_for_changes = true,
-				view_options = {
-					show_hidden = true,
-					is_hidden_file = function(name, _)
-						return vim.startswith(name, ".")
-					end,
-					is_always_hidden = function(_, _)
-						return false
-					end,
-				},
-				float = {
-					max_width = 50,
-					max_height = 30,
-					preview_split = "right",
-					override = function(conf)
-						return conf
-					end,
-				},
-			}
-
-			vim.g.loaded_netrw = 1
-			vim.g.loaded_netrwPlugin = 1
-		end,
-	},
-	{
-		"github/copilot.vim",
-		config = function()
-			vim.g.copilot_no_tab_map = false
-			vim.g.copilot_context = "git"
-		end,
-	},
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {
@@ -212,13 +207,7 @@ require("lazy").setup {
 			format_on_save = true,
 			formatters_by_ft = {
 				lua = { "stylua" },
-				python = { "black" },
-				javascript = { "prettier" },
-				typescript = { "prettier" },
-				go = { "gofmt" },
-				rust = { "rustfmt" },
-				groovy = { "groovyformatter" },
-				ruby = { "rubocop" },
+				python = {  "ruff"}
 			},
 		},
 	},
@@ -362,7 +351,7 @@ require("lazy").setup {
 		build = ":MasonUpdate",
 		opts = {
 			ensure_installed = {
-				"gopls",
+				"pylint",
 				"stylua",
 				"shellcheck",
 				"shfmt",
