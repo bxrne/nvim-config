@@ -4,7 +4,6 @@ if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system { "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath }
 end
 vim.opt.rtp:prepend(lazypath)
--- write a new  
 require("lazy").setup {
 	"tpope/vim-sleuth", -- NOTE: auto-detect indent settings
 	{
@@ -46,12 +45,15 @@ require("lazy").setup {
 	},
 { 
     "stevearc/oil.nvim",
-    dependencies = { "echasnovski/mini.nvim" },
+    dependencies = { "echasnovski/mini.icons"},
     config = function()
         require("oil").setup {
             default_file_explorer = true,
             skip_confirm_for_simple_edits = true,
             watch_for_changes = true,
+				view_options = {
+show_hidden=true,
+				},
             float = {
                 padding = 2,
                 max_width = 80,  
@@ -78,21 +80,42 @@ require("lazy").setup {
                 height = nil,
             },
         }
-        vim.g.loaded_netrw = 1
         vim.g.loaded_netrwPlugin = 1
     end,
 },
 
 
- {
-               "github/copilot.vim",
-               config = function()
-                       vim.g.copilot_no_tab_map = false
-                       vim.g.copilot_context = "files"
-               end,
-		opts = {},
-       },
-
+{
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+        require("copilot").setup({
+            panel = {
+                enabled = true,
+                auto_refresh = true,
+            },
+            suggestion = {
+                enabled = false, -- Using copilot-cmp instead
+            },
+            server_opts_overrides = {
+                autostart = true, -- This enables autostart
+                trace = "verbose",
+            },
+            filetypes = {
+                markdown = true,
+                help = true,
+            },
+        })
+    end,
+},
+{
+    "zbirenbaum/copilot-cmp",
+    dependencies = { "zbirenbaum/copilot.lua" },
+    config = function()
+        require("copilot_cmp").setup()
+    end,
+},
 
 	{
 		"lewis6991/gitsigns.nvim",
@@ -330,20 +353,27 @@ require("lazy").setup {
 			extensions = { "fugitive", "nvim-tree", "oil", "toggleterm" },
 		},
 	},
-	{
-		"neovim/nvim-lspconfig",
-		dependencies = {
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-cmdline",
-			"hrsh7th/nvim-cmp",
-			"L3MON4D3/LuaSnip",
-			"saadparwaiz1/cmp_luasnip",
-		},
-	},
+
+{
+    "neovim/nvim-lspconfig",
+    dependencies = {
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-cmdline",
+        "hrsh7th/nvim-cmp",
+        "L3MON4D3/LuaSnip",
+        "saadparwaiz1/cmp_luasnip",
+        "zbirenbaum/copilot.lua",
+        "zbirenbaum/copilot-cmp",
+    },
+    config = function()
+        require("lsp").setup()
+    end,
+},
+
 	{
 		"williamboman/mason.nvim",
 		cmd = "Mason",

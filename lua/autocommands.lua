@@ -6,13 +6,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("VimEnter", {
-	callback = function()
-		if vim.fn.isdirectory(vim.fn.argv()[1]) == 1 then
-			require("oil").open(vim.fn.argv()[1])
-		end
-	end,
-})
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "oil",
