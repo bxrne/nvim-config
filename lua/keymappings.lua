@@ -57,8 +57,5 @@ vim.keymap.set("n", "<leader>ct", "<cmd>CopilotChatTests<CR>", { desc = "Generat
 vim.keymap.set("n", "<leader>cf", "<cmd>CopilotChatFix<CR>", { desc = "Fix current buffer" })
 vim.keymap.set("n", "<leader>cd", "<cmd>CopilotChatDebug<CR>", { desc = "Debug current buffer" })
 
--- NOTE: Tab navigation
-vim.keymap.set("n", "<leader>tl", "gT", { desc = "Previous tab" })
-vim.keymap.set("n", "<leader>tr", "gt", { desc = "Next tab" })
 
 
