@@ -51,6 +51,10 @@ vim.keymap.set("n", "<leader>hn", function()
 	require("harpoon"):list():next()
 end)
 
+-- NOTE: Buffer navigation
+vim.keymap.set("n", "<leader>bn", "<cmd>bnext<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<leader>bp", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
+
 -- NOTE: Copilot chat mappings
 vim.keymap.set("n", "<leader>cc", "<cmd>CopilotChat<CR>", { desc = "Chat with current buffers" })
 vim.keymap.set("n", "<leader>ct", "<cmd>CopilotChatTests<CR>", { desc = "Generate tests" })
