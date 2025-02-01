@@ -4,8 +4,12 @@ function M.setup()
 	local cmp = require "cmp"
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+	-- Minimal LSP + Mason
 	require("mason").setup()
-	require("mason-lspconfig").setup()
+	require("mason-lspconfig").setup {
+		ensure_installed = { "gopls", "ts_ls", "lua_ls", "pyright" },
+		automatic_installation = true,
+	}
 
 	cmp.setup {
 		snippet = {
@@ -28,21 +32,13 @@ function M.setup()
 		}),
 	}
 
-	-- Configure LSP servers
 	local lspconfig = require "lspconfig"
 
-	-- Go
-	lspconfig.gopls.setup {
-		capabilities = capabilities,
-		settings = {
-			gopls = {
-				analyses = {
-					unusedparams = true,
-				},
-				staticcheck = true,
-			},
-		},
-	}
+	lspconfig.gopls.setup { capabilities = capabilities }
+	lspconfig.ts_ls.setup { capabilities = capabilities }
+	lspconfig.lua_ls.setup { capabilities = capabilities }
+	lspconfig.pyright.setup { capabilities = capabilities }
+
 
 	-- Global LSP mappings
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })

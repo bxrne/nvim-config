@@ -19,6 +19,12 @@ vim.api.nvim_create_autocmd("FileType", {
 	callback = function()
 		vim.opt_local.number = false
 		vim.opt_local.relativenumber = false
+		vim.keymap.set("n", "m", function()
+			require("oil").move()
+		end, { buffer = true, desc = "Move file in oil" })
+		vim.keymap.set("n", "r", function()
+			require("oil").rename()
+		end, { buffer = true, desc = "Rename file in oil" })
 	end,
 })
 

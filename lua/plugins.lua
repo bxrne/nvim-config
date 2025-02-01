@@ -16,6 +16,7 @@ require("lazy").setup {
 	},
 	{
 		"bxrne/was.nvim",
+		version = "v0.0.1",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
@@ -32,7 +33,7 @@ require("lazy").setup {
 		opts = {
 			events = { "InsertLeave", "BufLeave" },
 			silent = true,
-	},
+		},
 	},
 	{
 		"ThePrimeagen/harpoon",
@@ -43,22 +44,6 @@ require("lazy").setup {
 			harpoon:setup()
 		end,
 		dependencies = { "nvim-lua/plenary.nvim", "nvim-lua/popup.nvim" },
-	},
-	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
-		opts = {},
-		lsp = {
-			hover = { enabled = true },
-			signature_help = { enabled = true },
-			stylize_markdown = true,
-			documentation = true,
-		},
-
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
-		},
 	},
 
 	{
@@ -102,7 +87,6 @@ require("lazy").setup {
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {
-
 			signs_staged_enable = true,
 			signcolumn = true,
 			numhl = true,
@@ -314,12 +298,12 @@ require("lazy").setup {
 			},
 			sections = {
 				lualine_a = { { "mode", right_padding = 2 } },
-				lualine_b = { "branch", "filename" },
+				lualine_b = { "branch" },
 				lualine_c = {
 					"diff",
 					{ "gitsigns" },
 				},
-				lualine_x = {},
+				lualine_x = {  },
 				lualine_y = { {
 					"diagnostics",
 					sources = { "nvim_lsp" },
@@ -368,5 +352,13 @@ require("lazy").setup {
 				"shfmt",
 			},
 		},
+	},
+	{
+		"akinsho/bufferline.nvim",
+		version = "*",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		config = function()
+			require("bufferline").setup()
+		end,
 	},
 }
