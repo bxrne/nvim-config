@@ -39,10 +39,11 @@ function M.setup()
 		settings = {
 			gopls = {
 				analyses = {
-					unusedparams = true,
+				  unusedparams = true,
 				},
 				staticcheck = true,
-			},
+				gofumpt = true,
+			  },
 		},
 	}
 	lspconfig.ts_ls.setup { capabilities = capabilities }
