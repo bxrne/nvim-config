@@ -51,27 +51,10 @@ vim.keymap.set("n", "<leader>hn", function()
 	require("harpoon"):list():next()
 end)
 
--- NOTE: Copilot mappings
+-- NOTE: Copilot chat mappings
 vim.keymap.set("n", "<leader>cc", "<cmd>CopilotChat<CR>", { desc = "Chat with current buffers" })
 vim.keymap.set("n", "<leader>ct", "<cmd>CopilotChatTests<CR>", { desc = "Generate tests" })
 vim.keymap.set("n", "<leader>cf", "<cmd>CopilotChatFix<CR>", { desc = "Fix current buffer" })
 vim.keymap.set("n", "<leader>cd", "<cmd>CopilotChatDebug<CR>", { desc = "Debug current buffer" })
 
--- NOTE: Tab management key mappings
-vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<CR>", { desc = "[T]ab [N]ew" })
-vim.keymap.set("n", "<leader>tq", "<cmd>tabclose<CR>", { desc = "[T]ab [Q]uit" })
-vim.keymap.set("n", "<leader>to", "<cmd>tabonly<CR>", { desc = "[T]ab [O]nly" })
-vim.keymap.set("n", "<leader>tl", "<cmd>tabnext<CR>", { desc = "[T]ab [L]ast" })
-vim.keymap.set("n", "<leader>th", "<cmd>tabprevious<CR>", { desc = "[T]ab [H]ome" })
-vim.keymap.set("n", "<leader>tm", "<cmd>tabmove<CR>", { desc = "[T]ab [M]ove" })
-vim.keymap.set("n", "]t", "<cmd>tabnext<CR>", { desc = "Next tab" })
-vim.keymap.set("n", "[t", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
-vim.keymap.set("n", "<C-1>", "1gt", { desc = "Go to tab 1" })
-vim.keymap.set("n", "<C-2>", "2gt", { desc = "Go to tab 2" })
-vim.keymap.set("n", "<C-3>", "3gt", { desc = "Go to tab 3" })
-vim.keymap.set("n", "<C-4>", "4gt", { desc = "Go to tab 4" })
-vim.keymap.set("n", "<C-5>", "5gt", { desc = "Go to tab 5" })
-vim.keymap.set("n", "<C-6>", "6gt", { desc = "Go to tab 6" })
-vim.keymap.set("n", "<C-7>", "7gt", { desc = "Go to tab 7" })
-vim.keymap.set("n", "<C-8>", "8gt", { desc = "Go to tab 8" })
-vim.keymap.set("n", "<C-9>", "9gt", { desc = "Go to tab 9" })
+
