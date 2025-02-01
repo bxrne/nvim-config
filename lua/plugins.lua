@@ -207,6 +207,11 @@ require("lazy").setup {
 		},
 	},
 	{
+        'Sam-programs/cmdline-hl.nvim',
+        event = 'VimEnter',
+        opts = {}
+    },
+	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 		branch = "main",
 		build = "make tiktoken",
