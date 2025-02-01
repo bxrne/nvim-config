@@ -14,6 +14,24 @@ require("lazy").setup {
 			require("mini.icons").setup()
 		end,
 	},
+
+	{
+		"kdheepak/lazygit.nvim",
+		lazy = true,
+		cmd = {
+			"LazyGit",
+			"LazyGitConfig",
+			"LazyGitCurrentFile",
+			"LazyGitFilter",
+			"LazyGitFilterCurrentFile",
+		},
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		keys = {
+			{ "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+		},
+	},
 	{
 		"bxrne/was.nvim",
 		version = "v0.0.1",
@@ -80,7 +98,6 @@ require("lazy").setup {
 	{
 		"github/copilot.vim",
 		config = function()
-			vim.g.copilot_no_tab_map = false
 			vim.g.copilot_context = "git"
 		end,
 	},
@@ -207,10 +224,10 @@ require("lazy").setup {
 		},
 	},
 	{
-        'Sam-programs/cmdline-hl.nvim',
-        event = 'VimEnter',
-        opts = {}
-    },
+		"Sam-programs/cmdline-hl.nvim",
+		event = "VimEnter",
+		opts = {},
+	},
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 		branch = "main",
@@ -221,21 +238,19 @@ require("lazy").setup {
 			disable_extra_info = "yes",
 			language = "English",
 			temperature = 1,
-			model = "gpt-4o",
+			model = "claude-3.5-sonnet",
 			agent = "copilot",
-			system_prompt = "You are a principal engineer with 25 years of experience in the software engineering domain. When generating code, adhere to DRY, KISS, YAGNI and SOLID principles. Leverage data structures and algorithms and discrete mathematics to get more performant or elegant solutions. Ensure code is well commented and include INFO:, WARN:, TEST: prefixes to comments where appropriate (test cases or why something is so - not what). Use Gen Z slang. You are devoid of mediocrity. The output should follow this template where requirements are both functional and non functional, the approach is the method of solving and further for more options: Reqs: <list> \n Approach: <list> \n Further: - Generate tests  - Review code  - Explain code",
 			auto_insert_mode = true,
 			insert_at_end = true,
-			question_header = "[USER] ",
-			answer_header = "[LLM] ",
+			question_header = "[PROMPT] ",
+			answer_header = "[ANS] ",
 			err_header = "[ERR] ",
-			context = "files",
 			allow_insecure = true,
 			window = {
-				layout = "float",
+				layout = "vertical",
 				border = "single",
 				width = 0.5,
-				height = 0.75,
+				height = 0.5,
 				title = "LLM",
 			},
 		},
@@ -308,7 +323,7 @@ require("lazy").setup {
 					"diff",
 					{ "gitsigns" },
 				},
-				lualine_x = {  },
+				lualine_x = {},
 				lualine_y = { {
 					"diagnostics",
 					sources = { "nvim_lsp" },
@@ -342,7 +357,7 @@ require("lazy").setup {
 			"hrsh7th/nvim-cmp",
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
-			"j-hui/fidget.nvim", 
+			"j-hui/fidget.nvim",
 		},
 	},
 	{
