@@ -6,28 +6,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("VimEnter", {
-	callback = function()
-		if vim.fn.isdirectory(vim.fn.argv()[1]) == 1 then
-			require("oil").open(vim.fn.argv()[1])
-		end
-	end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "oil",
-	callback = function()
-		vim.opt_local.number = false
-		vim.opt_local.relativenumber = false
-		vim.keymap.set("n", "m", function()
-			require("oil").move()
-		end, { buffer = true, desc = "Move file in oil" })
-		vim.keymap.set("n", "r", function()
-			require("oil").rename()
-		end, { buffer = true, desc = "Rename file in oil" })
-	end,
-})
-
 vim.api.nvim_create_autocmd("TermOpen", {
 	pattern = "*",
 	callback = function()
@@ -39,7 +17,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*.go",
 	callback = function()
-		vim.fn.CocAction('runCommand', 'editor.action.organizeImport')
+		vim.fn.CocAction("runCommand", "editor.action.organizeImport")
 	end,
 	desc = "Organize Go imports before saving",
 })

@@ -65,35 +65,8 @@ require("lazy").setup {
 	},
 
 	{
-		"stevearc/oil.nvim",
-		dependencies = { "echasnovski/mini.nvim" },
-		config = function()
-			require("oil").setup {
-				default_file_explorer = true,
-				skip_confirm_for_simple_edits = true,
-				watch_for_changes = true,
-				view_options = {
-					show_hidden = true,
-					is_hidden_file = function(name, _)
-						return vim.startswith(name, ".")
-					end,
-					is_always_hidden = function(_, _)
-						return false
-					end,
-				},
-				float = {
-					max_width = 50,
-					max_height = 30,
-					preview_split = "right",
-					override = function(conf)
-						return conf
-					end,
-				},
-			}
-
-			vim.g.loaded_netrw = 1
-			vim.g.loaded_netrwPlugin = 1
-		end,
+		"nvim-telescope/telescope-file-browser.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 	},
 	{
 		"github/copilot.vim",
@@ -159,10 +132,24 @@ require("lazy").setup {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown(),
 					},
+					file_browser = {
+						theme = "ivy",
+						-- disables netrw and use telescope-file-browser in its place
+						hijack_netrw = true,
+						mappings = {
+							["i"] = {
+								-- your custom insert mode mappings
+							},
+							["n"] = {
+								-- your custom normal mode mappings
+							},
+						},
+					},
 				},
 			}
 			pcall(require("telescope").load_extension, "fzf")
 			pcall(require("telescope").load_extension, "ui-select")
+			pcall(require("telescope").load_extension, "file_browser")
 
 			local builtin = require "telescope.builtin"
 			vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })

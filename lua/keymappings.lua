@@ -1,15 +1,12 @@
--- vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
-
 -- NOTE: Toggleterm
 vim.keymap.set("n", "<leader>tt", "<cmd>lua require('toggleterm').toggle()<CR>", { desc = "Toggle [T]erminal" })
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 vim.keymap.set("n", "<leader>ts", "<cmd>ToggleTerm direction=horizontal<CR>", { desc = "Toggle Terminal Horizontal" })
 vim.keymap.set("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<CR>", { desc = "Toggle Terminal Vertical" })
 
--- NOTE: Oil as file explorer
-vim.keymap.set("n", "<leader>e", function()
-	require("oil").toggle_float()
-end, { desc = "Toggle Oil" })
+vim.keymap.set("n", "<space>e", function()
+	require("telescope").extensions.file_browser.file_browser()
+end)
 
 -- NOTE: Harpoon keymappings
 vim.keymap.set("n", "<leader>a", function()
@@ -62,6 +59,3 @@ vim.keymap.set("n", "<leader>cc", "<cmd>CopilotChat<CR>", { desc = "Chat with cu
 vim.keymap.set("n", "<leader>ct", "<cmd>CopilotChatTests<CR>", { desc = "Generate tests" })
 vim.keymap.set("n", "<leader>cf", "<cmd>CopilotChatFix<CR>", { desc = "Fix current buffer" })
 vim.keymap.set("n", "<leader>cd", "<cmd>CopilotChatDebug<CR>", { desc = "Debug current buffer" })
-
-
-
