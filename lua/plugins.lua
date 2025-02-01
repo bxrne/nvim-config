@@ -366,4 +366,8 @@ require("lazy").setup {
 			require("bufferline").setup()
 		end,
 	},
+	{
+		"j-hui/fidget.nvim",
+		opts = {},
+	},
 }
