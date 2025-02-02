@@ -14,7 +14,9 @@ require("lazy").setup {
 			require("mini.icons").setup()
 		end,
 	},
-
+	{
+		"tjdevries/present.nvim",
+	},
 	{
 		"kdheepak/lazygit.nvim",
 		lazy = true,
