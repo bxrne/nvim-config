@@ -135,6 +135,7 @@ require("lazy").setup {
 						require("telescope.themes").get_dropdown(),
 					},
 					file_browser = {
+						path = "%:p:h",
 						--						theme = "ivy",
 						-- disables netrw and use telescope-file-browser in its place
 						hijack_netrw = true,
