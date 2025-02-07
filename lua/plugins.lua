@@ -228,6 +228,18 @@ require("lazy").setup {
 		},
 	},
 	{
+		"SmiteshP/nvim-navic",
+		config = function()
+			require("nvim-navic").setup {
+				highlight = true,
+				separator = " > ",
+				depth_limit = 0,
+				depth_limit_indicator = "..",
+			}
+		end,
+	},
+
+	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 		branch = "main",
 		build = "make tiktoken",
@@ -322,6 +334,19 @@ require("lazy").setup {
 				lualine_c = {
 					"diff",
 					{ "gitsigns" },
+					{
+						function()
+							local navic = require "nvim-navic"
+							if navic.is_available() then
+								return navic.get_location()
+							end
+							return ""
+						end,
+						cond = function()
+							local navic = require "nvim-navic"
+							return navic.is_available()
+						end,
+					},
 				},
 				lualine_x = {},
 				lualine_y = { {
@@ -343,6 +368,9 @@ require("lazy").setup {
 				lualine_z = {},
 			},
 			extensions = { "fugitive", "nvim-tree", "oil", "toggleterm" },
+		},
+		dependencies = {
+			"SmiteshP/nvim-navic", -- Add this dependency
 		},
 	},
 	{

@@ -3,7 +3,14 @@ local M = {}
 function M.setup()
 	local cmp = require "cmp"
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
+	local navic = require "nvim-navic"
 
+	local on_attach = function(client, bufnr)
+		-- Enable navic for the buffer if the LSP supports it
+		if client.server_capabilities.documentSymbolProvider then
+			navic.attach(client, bufnr)
+		end
+	end
 	-- Minimal LSP + Mason
 	require("mason").setup()
 	require("mason-lspconfig").setup {
@@ -36,20 +43,20 @@ function M.setup()
 
 	lspconfig.gopls.setup {
 		capabilities = capabilities,
+		on_attach = on_attach,
 		settings = {
 			gopls = {
 				analyses = {
-				  unusedparams = true,
+					unusedparams = true,
 				},
 				staticcheck = true,
 				gofumpt = true,
-			  },
+			},
 		},
 	}
-	lspconfig.ts_ls.setup { capabilities = capabilities }
-	lspconfig.lua_ls.setup { capabilities = capabilities }
-	lspconfig.pyright.setup { capabilities = capabilities }
-
+	lspconfig.ts_ls.setup { capabilities = capabilities, on_attach = on_attach }
+	lspconfig.lua_ls.setup { capabilities = capabilities, on_attach = on_attach }
+	lspconfig.pyright.setup { capabilities = capabilities, on_attach = on_attach }
 
 	-- Global LSP mappings
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
