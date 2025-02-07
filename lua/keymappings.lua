@@ -8,6 +8,14 @@ vim.keymap.set("n", "<space>e", function()
 	require("telescope").extensions.file_browser.file_browser()
 end)
 
+-- NOTE: Telescope keymappings
+vim.keymap.set("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>", { desc = "Find files" })
+vim.keymap.set("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<CR>", { desc = "Grep files" })
+vim.keymap.set("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>", { desc = "Buffers" })
+vim.keymap.set("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>", { desc = "Help tags" })
+vim.keymap.set("n", "<leader>fc", "<cmd>lua require('telescope.builtin').commands()<CR>", { desc = "Commands" })
+vim.keymap.set("n", "<leader>fw", "<cmd>lua require('telescope.builtin').grep_string()<CR>", { desc = "Grep word" })
+
 -- NOTE: Harpoon keymappings
 vim.keymap.set("n", "<leader>a", function()
 	require("harpoon"):list():add()
