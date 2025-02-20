@@ -8,6 +8,9 @@ vim.keymap.set("n", "<space>e", function()
 	require("telescope").extensions.file_browser.file_browser()
 end)
 
+-- indenting
+vim.keymap.set("v", "<", "<gv", { noremap = true, silent = true })
+vim.keymap.set("v", ">", ">gv", { noremap = true, silent = true })
 -- NOTE: Telescope keymappings
 vim.keymap.set("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>", { desc = "Find files" })
 vim.keymap.set("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<CR>", { desc = "Grep files" })
