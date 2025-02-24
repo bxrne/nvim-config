@@ -116,15 +116,7 @@ require("lazy").setup {
 			},
 			auto_attach = true,
 			attach_to_untracked = false,
-			current_line_blame = true, -- Enable git blame for current line
-			current_line_blame_opts = {
-				virt_text = true,
-				virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
-				delay = 1000,
-				ignore_whitespace = false,
-				virt_text_priority = 100,
-			},
-			current_line_blame_formatter = "<author>, <author_time:%R> - <summary>",
+			current_line_blame = false, -- Disable git blame for current line
 			sign_priority = 6,
 			update_debounce = 100,
 			status_formatter = nil, -- Use default
@@ -362,10 +354,12 @@ require("lazy").setup {
 							local navic = require "nvim-navic"
 							return navic.is_available()
 						end,
+					
 					},
 				},
 				lualine_x = {},
-				lualine_y = { {
+				lualine_y = { 
+										{
 					"diagnostics",
 					sources = { "nvim_lsp" },
 					always_visible = true,
