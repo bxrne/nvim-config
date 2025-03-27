@@ -15,6 +15,25 @@ require("lazy").setup {
 		end,
 	},
 	{
+		"mgierada/lazydocker.nvim",
+		dependencies = { "akinsho/toggleterm.nvim" },
+		config = function()
+			require("lazydocker").setup {
+				border = "curved",
+			}
+		end,
+		event = "BufRead",
+		keys = {
+			{
+				"<leader>ld",
+				function()
+					require("lazydocker").open()
+				end,
+				desc = "Open Lazydocker floating window",
+			},
+		},
+	},
+	{
 		"tjdevries/present.nvim",
 	},
 	{
@@ -354,16 +373,16 @@ require("lazy").setup {
 							local navic = require "nvim-navic"
 							return navic.is_available()
 						end,
-					
 					},
 				},
 				lualine_x = {},
-				lualine_y = { 
-										{
-					"diagnostics",
-					sources = { "nvim_lsp" },
-					always_visible = true,
-				} },
+				lualine_y = {
+					{
+						"diagnostics",
+						sources = { "nvim_lsp" },
+						always_visible = true,
+					},
+				},
 				lualine_z = {
 					{ "filetype", left_padding = 2 },
 					"location",
