@@ -14,7 +14,7 @@ function M.setup()
 	-- Minimal LSP + Mason
 	require("mason").setup()
 	require("mason-lspconfig").setup {
-		ensure_installed = { "gopls", "ts_ls", "lua_ls", "pyright" },
+		ensure_installed = { "gopls", "ts_ls", "lua_ls", "pyright", "zls" },
 		automatic_installation = true,
 	}
 
@@ -41,10 +41,38 @@ function M.setup()
 
 	local lspconfig = require "lspconfig"
 
+	--zls
+	lspconfig.zls.setup {
+		capabilities = capabilities,
+		on_attach = on_attach,
+		settings = {
+			zls = {
+				checkOnSave = {
+					command = "zls",
+					args = { "check", vim.api.nvim_buf_get_name(0) },
+				},
+			},
+		},
+	}
+
 	lspconfig.gopls.setup {
 		capabilities = capabilities,
 		on_attach = on_attach,
 		settings = {
+			zls = {
+				checkOnSave = {
+					command = "zls",
+					args = { "check", vim.api.nvim_buf_get_name(0) },
+				},
+			},
+
+			pyright = {
+				analysis = {
+					autoSearchPaths = true,
+					useLibraryCodeForTypes = true,
+				},
+			},
+
 			gopls = {
 				analyses = {
 					unusedparams = true,

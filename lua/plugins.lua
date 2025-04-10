@@ -427,6 +427,9 @@ require("lazy").setup {
 		opts = {
 			ensure_installed = {
 				"gopls",
+				"pyright",
+				"tsserver",
+				"zls",
 				"stylua",
 				"shellcheck",
 				"shfmt",
