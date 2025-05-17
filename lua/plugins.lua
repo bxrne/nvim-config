@@ -342,7 +342,7 @@ require("lazy").setup {
 		end,
 	},
 	{
-		"patil-suraj/ghibli.nvim",
+		"bxrne/ghibli.nvim",
 		lazy = false, -- make sure we load this during startup
 		priority = 1000, -- load before other plugins
 		config = function()
