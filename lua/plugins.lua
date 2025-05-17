@@ -15,6 +15,12 @@ require("lazy").setup {
 		end,
 	},
 	{
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup()
+		end,
+	},
+	{
 		"mgierada/lazydocker.nvim",
 		dependencies = { "akinsho/toggleterm.nvim" },
 		config = function()
@@ -342,15 +348,13 @@ require("lazy").setup {
 		end,
 	},
 	{
-		"bxrne/ghibli.nvim",
-		lazy = false, -- make sure we load this during startup
-		priority = 1000, -- load before other plugins
+		dir = vim.fn.expand "bxrne/ghibli.nvim",
+		lazy = false,
+		priority = 1000,
 		config = function()
-			-- Setup with options (optional)
 			require("ghibli").setup {
-				style = "light", -- "light" or "dark"
+				style = "light",
 			}
-
 			require("ghibli").colorscheme()
 		end,
 	},
@@ -442,7 +446,7 @@ require("lazy").setup {
 	{
 		"akinsho/bufferline.nvim",
 		version = "*",
-		dependencies = "nvim-tree/nvim-web-devicons",
+		dependencies = "ryanoasis/vim-devicons",
 		config = function()
 			require("bufferline").setup()
 		end,
