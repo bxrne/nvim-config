@@ -342,13 +342,16 @@ require("lazy").setup {
 		end,
 	},
 	{
-		"tiagovla/tokyodark.nvim",
-		opts = {
-			-- custom options here
-		},
-		config = function(_, opts)
-			require("tokyodark").setup(opts) -- calling setup is optional
-			vim.cmd [[colorscheme tokyodark]]
+		"patil-suraj/ghibli.nvim",
+		lazy = false, -- make sure we load this during startup
+		priority = 1000, -- load before other plugins
+		config = function()
+			-- Setup with options (optional)
+			require("ghibli").setup {
+				style = "light", -- "light" or "dark"
+			}
+
+			require("ghibli").colorscheme()
 		end,
 	},
 	{
