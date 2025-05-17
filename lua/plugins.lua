@@ -348,7 +348,7 @@ require("lazy").setup {
 		end,
 	},
 	{
-		dir = vim.fn.expand "bxrne/ghibli.nvim",
+		"bxrne/ghibli.nvim",
 		lazy = false,
 		priority = 1000,
 		config = function()
