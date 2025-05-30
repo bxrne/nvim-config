@@ -7,17 +7,7 @@ This repository contains my personal Neovim configuration, managed with [lazy.nv
 - **Neovim** version 0.8 or higher
 - **Git** for cloning the repository
 - **Nerd Font** installed on your system (e.g., [Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts))
-- **Node.js** for certain plugins (ensure it's in your system's PATH)
-
-### Additional Prerequisites for Windows
-
-- **PowerShell** available in your PATH
-- **clip.exe** for clipboard integration (usually available by default)
-
-### Additional Prerequisites for WSL
-
-- **clip.exe** from Windows for clipboard support
-- Ensure **PowerShell** is accessible from within WSL
+- **Node.js** v20+ for certain plugins (ensure it's in your system's PATH)
 
 ## Installation
 
@@ -45,8 +35,6 @@ WSL (Windows Subsystem for Linux)
 git clone https://github.com/theadambyrne/nvim-config.git "${XDG_CONFIG_HOME:-$HOME/.config}/nvim"
 ```
 
-2. Configure clipboard integration by ensuring clip.exe and powershell.exe are accessible from WSL, This configuration is already handled in the settings.
-
 ## Usage
 
 Launch Neovim, and it will automatically install the required plugins using lazy.nvim.
@@ -62,3 +50,4 @@ To update the plugins and configuration, open Neovim and run:
 ## Additional Notes
 
 The configuration disables NetRW in favor of the oil.nvim plugin. Adjust the Node.js path in plugins.lua if it's not located at /usr/bin/node.
+Need Node > v20 for Copilot.

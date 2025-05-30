@@ -21,25 +21,6 @@ require("lazy").setup {
 		end,
 	},
 	{
-		"mgierada/lazydocker.nvim",
-		dependencies = { "akinsho/toggleterm.nvim" },
-		config = function()
-			require("lazydocker").setup {
-				border = "curved",
-			}
-		end,
-		event = "BufRead",
-		keys = {
-			{
-				"<leader>ld",
-				function()
-					require("lazydocker").open()
-				end,
-				desc = "Open Lazydocker floating window",
-			},
-		},
-	},
-	{
 		"bxrne/was.nvim",
 		version = "v0.0.1",
 		dependencies = {
@@ -50,13 +31,26 @@ require("lazy").setup {
 			defer_time = 2500,
 		},
 	},
+	{ "tpope/vim-fugitive" },
+	{
+		"romgrk/barbar.nvim",
+		dependencies = {
+			"lewis6991/gitsigns.nvim",
+			"nvim-tree/nvim-web-devicons",
+		},
+		init = function()
+			vim.g.barbar_auto_setup = false
+		end,
+		opts = {},
+		version = "^1.9.1",
+	},
 	{
 		"rachartier/tiny-inline-diagnostic.nvim",
 		event = "LspAttach",
-		priority = 1000, 
+		priority = 1000,
 		config = function()
 			require("tiny-inline-diagnostic").setup()
-			vim.diagnostic.config { virtual_text = true}
+			vim.diagnostic.config { virtual_text = true }
 		end,
 	},
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
@@ -405,14 +399,7 @@ require("lazy").setup {
 			},
 		},
 	},
-	{
-		"akinsho/bufferline.nvim",
-		version = "*",
-		dependencies = "ryanoasis/vim-devicons",
-		config = function()
-			require("bufferline").setup()
-		end,
-	},
+
 	{
 		"j-hui/fidget.nvim",
 		opts = {},
