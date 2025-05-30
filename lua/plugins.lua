@@ -40,53 +40,6 @@ require("lazy").setup {
 		},
 	},
 	{
-		"tjdevries/present.nvim",
-	},
-	{
-		"lervag/vimtex",
-		lazy = false,
-		config = function()
-			vim.g.vimtex_view_method = "skim"
-			vim.g.vimtex_compiler_method = "latexmk"
-			vim.g.vimtex_quickfix_mode = 0
-			vim.g.vimtex_compiler_latexmk = {
-				continuous = 1, -- Auto-compile on save
-				callback = 1,
-			}
-		end,
-	},
-	{
-		"ldelossa/gh.nvim",
-		dependencies = {
-			{
-				"ldelossa/litee.nvim",
-				config = function()
-					require("litee.lib").setup()
-				end,
-			},
-		},
-		config = function()
-			require("litee.gh").setup()
-		end,
-	},
-	{
-		"kdheepak/lazygit.nvim",
-		lazy = true,
-		cmd = {
-			"LazyGit",
-			"LazyGitConfig",
-			"LazyGitCurrentFile",
-			"LazyGitFilter",
-			"LazyGitFilterCurrentFile",
-		},
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-		keys = {
-			{ "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
-		},
-	},
-	{
 		"bxrne/was.nvim",
 		version = "v0.0.1",
 		dependencies = {
