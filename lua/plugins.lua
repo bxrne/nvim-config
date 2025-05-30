@@ -50,6 +50,15 @@ require("lazy").setup {
 			defer_time = 2500,
 		},
 	},
+	{
+		"rachartier/tiny-inline-diagnostic.nvim",
+		event = "LspAttach",
+		priority = 1000, 
+		config = function()
+			require("tiny-inline-diagnostic").setup()
+			vim.diagnostic.config { virtual_text = true}
+		end,
+	},
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 	{ "numToStr/Comment.nvim", opts = {} },
 	{
