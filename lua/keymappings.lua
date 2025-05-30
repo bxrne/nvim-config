@@ -21,12 +21,13 @@ vim.keymap.set("n", "<leader>fc", "<cmd>lua require('telescope.builtin').command
 vim.keymap.set("n", "<leader>fw", "<cmd>lua require('telescope.builtin').grep_string()<CR>", { desc = "Grep word" })
 
 -- NOTE: Vim Fugitive (Git Client)
-vim.keymap.set("n", "<Leader>gs", ":Git status<CR>", { desc = "Git Status" })
-vim.keymap.set("n", "<Leader>gc", ":Git commit<CR>", { desc = "Git Commit" })
-vim.keymap.set("n", "<Leader>gb", ":Git blame<CR>", { desc = "Git Blame" })
-vim.keymap.set("n", "<Leader>gp", ":Git push<CR>", { desc = "Git Push" })
-vim.keymap.set("n", "<Leader>ga", ":Git add .<CR>", { desc = "Git Add" })
-vim.keymap.set("n", "<Leader>gd", ":Git diffsplit<CR>", { desc = "Git Diff" })
+vim.keymap.set("n", "<Leader>vs", ":Git status<CR>", { desc = "Git Status" })
+vim.keymap.set("n", "<Leader>vc", ":Git commit<CR>", { desc = "Git Commit" })
+vim.keymap.set("n", "<Leader>vb", ":Git blame<CR>", { desc = "Git Blame" })
+vim.keymap.set("n", "<Leader>vp", ":Git push<CR>", { desc = "Git Push" })
+vim.keymap.set("n", "<Leader>va", ":Git add .<CR>", { desc = "Git Add" })
+vim.keymap.set("n", "<Leader>vd", ":Git diff<CR>", { desc = "Git Diff" })
+vim.keymap.set("n", "<Leader>vt", ":Git difftool<CR>", { desc = "Git Diff tool" })
 
 -- NOTE: Harpoon keymappings
 vim.keymap.set("n", "<leader>a", function()
