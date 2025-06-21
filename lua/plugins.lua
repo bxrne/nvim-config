@@ -14,6 +14,7 @@ require("lazy").setup {
 			require("mini.icons").setup()
 		end,
 	},
+	{ "rose-pine/neovim", name = "rose-pine" },
 	{
 		"amitds1997/remote-nvim.nvim",
 		version = "*", -- Pin to GitHub releases
@@ -49,7 +50,7 @@ require("lazy").setup {
 			"nvim-tree/nvim-web-devicons",
 		},
 		init = function()
-			vim.g.barbar_auto_setup = false
+			vim.g.barbar_auto_setup = true
 		end,
 		opts = {},
 		version = "^1.9.1",
@@ -258,7 +259,7 @@ require("lazy").setup {
 			err_header = "[ERR] ",
 			allow_insecure = true,
 			window = {
-				layout = "vertical",
+				layout = "horizontal",
 				border = "single",
 				width = 0.5,
 				height = 0.5,
@@ -311,17 +312,6 @@ require("lazy").setup {
 		config = function(_, opts)
 			require("nvim-treesitter.install").prefer_git = true
 			require("nvim-treesitter.configs").setup(opts)
-		end,
-	},
-	{
-		"bxrne/ghibli.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require("ghibli").setup {
-				style = "light",
-			}
-			require("ghibli").colorscheme()
 		end,
 	},
 	{
